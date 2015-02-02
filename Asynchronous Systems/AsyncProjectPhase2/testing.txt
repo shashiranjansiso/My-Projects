@@ -1,0 +1,74 @@
+1.basic functionality testcase:
+	Description:
+		this test case checks the basic functionality of bank for deposit, withdraw and query operations.
+	configuration file:
+		config/config_basic_op.ini
+	log file:
+		log/basic_operations.da.log
+
+2.Random Request testcase:
+	Description:
+		To generate the the random requests (10 requeats) with probability of given request for withdraw, deposit and getbalance from one client of a specific bank.
+	configuration file:
+		config/config_randomized.ini
+	log file:
+		log/randomized_requests.da.log
+
+2.Itemized Request testcase:
+	Description:
+		this test case generated itemized requests for banks
+	configuration file:
+		config/config_itemized.ini
+	log file:
+		log/itemized_requests.da.log
+
+4. duplicate request testcase:
+	Description:
+		this test case sends duplicate deposit request to bank
+	configuration file:
+		config/config_duplicate_deposit_request.ini
+	log file:
+		log/duplicate_deposit.da.log
+
+5. multiple duplicate request testcase:
+	Description:
+		this test case sends multiple requests to bank and it should get the same reply all the time.
+	configuration file:
+		config/config_duplicate_withdraw_deposit.ini
+	log file:
+		log/duplicaterequest.da.log
+
+6. InconsistentHistory testcase:
+	Description:
+		in this test case client sends the request again with same request id and some other different attribute like amount, accountnum or etc.
+	configuration file:
+		config/config_inconsistentwithhistory.ini
+	log file:
+		log/inconsistentwithhistory.da.log
+
+7. Insufficient Fund testcase:
+	Description:
+		this test test is for withdraw request when balance is less than the current balance. 
+	configuration file:
+		config/config_insufficient_fund_withdraw_notexistingaccount.ini
+	log file:
+		log/insufficient_balance.da.log
+
+8. One bank multiple server multiple client testcase:
+	Description:
+		this test case checks with one bank having multiple servers and multiple client for the bank
+	configuration file:
+		config/config_onebank_multipleclient_multipleserver.ini
+	log file:
+		log/one_bank_multipleclient_multiple_server.da.log
+
+9. multiple bank multiple server multiple client testcase:
+	Description:
+		this test case checks with multiple banks having multiple clients and multiple servers
+	configuration file:
+		config/config_multiplebank_multipleclient_multipleserver.ini
+	log file:
+		log/multiple_bank_multipleclient_multiple_server.da.log
+
+
+

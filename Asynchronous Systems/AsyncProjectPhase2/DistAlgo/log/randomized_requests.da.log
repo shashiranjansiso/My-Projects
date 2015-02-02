@@ -1,0 +1,230 @@
+[2014-10-13 22:58:58,201]da.api:INFO: Running iteration 1 ...
+[2014-10-13 22:58:58,206]runtime.UdpEndPoint(shashis-MacBook-Air.local_27923):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 27923) initialization complete
+[2014-10-13 22:58:58,259]da.api:DEBUG: Current process is ('shashis-MacBook-Air.local', 27923)
+[2014-10-13 22:58:58,259]da.api:DEBUG: Creating 1 instances of <class 'shashi_working.client'>..
+[2014-10-13 22:58:58,263]da.api:DEBUG: 1 instances of client created.
+[2014-10-13 22:58:58,267]runtime.UdpEndPoint(shashis-MacBook-Air.local_37818):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 37818) initialization complete
+[2014-10-13 22:58:58,268]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: Sending id to parent...
+[2014-10-13 22:58:58,270]da.api:DEBUG: Current process is ('shashis-MacBook-Air.local', 27923)
+[2014-10-13 22:58:58,270]da.api:DEBUG: Creating 3 instances of <class 'shashi_working.server'>..
+[2014-10-13 22:58:58,276]da.api:DEBUG: 3 instances of server created.
+[2014-10-13 22:58:58,277]runtime.UdpEndPoint(shashis-MacBook-Air.local_16321):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 16321) initialization complete
+[2014-10-13 22:58:58,280]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: Sending id to parent...
+[2014-10-13 22:58:58,280]runtime.UdpEndPoint(shashis-MacBook-Air.local_32187):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 32187) initialization complete
+[2014-10-13 22:58:58,282]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: Sending id to parent...
+[2014-10-13 22:58:58,282]runtime.UdpEndPoint(shashis-MacBook-Air.local_26384):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 26384) initialization complete
+[2014-10-13 22:58:58,283]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: Sending id to parent...
+[2014-10-13 22:58:58,285]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: Running setup..
+[2014-10-13 22:58:58,285]da.api:DEBUG: Starting [<server('shashis-MacBook-Air.local', 26384)>, <server('shashis-MacBook-Air.local', 16321)>, <server('shashis-MacBook-Air.local', 32187)>]...
+[2014-10-13 22:58:58,285]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: Running setup..
+[2014-10-13 22:58:58,286]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: Running setup..
+[2014-10-13 22:58:58,286]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::server set up called..
+[2014-10-13 22:58:58,287]da.api:DEBUG: Starting [<client('shashis-MacBook-Air.local', 37818)>]...
+[2014-10-13 22:58:58,286]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::server set up called..
+[2014-10-13 22:58:58,286]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::server set up called..
+[2014-10-13 22:58:58,287]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 22:58:58,287]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 22:58:58,287]da.api:INFO: Terminating...
+[2014-10-13 22:58:58,286]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 22:58:58,288]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: Running setup..
+[2014-10-13 22:58:58,288]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: set up called...
+[2014-10-13 22:58:58,288]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 22:58:58,288]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.1, operation=Query, accNum=94134, amount=None)
+[2014-10-13 22:58:58,289]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.1', 'Query', 94134, None)>
+[2014-10-13 22:58:58,289]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.1', 'Query', 94134, None)>
+[2014-10-13 22:58:58,290]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.2, operation=Deposit, accNum=63789, amount=964)
+[2014-10-13 22:58:58,291]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::shashi::received query request from client: (reqid =1.client1.1, operation = Query, accNum =94134)
+[2014-10-13 22:58:58,291]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.2', 'Deposit', 63789, 964)>
+[2014-10-13 22:58:58,291]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.1, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 22:58:58,292]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.2', 'Deposit', 63789, 964)>
+[2014-10-13 22:58:58,292]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.3, operation=Query, accNum=2720, amount=None)
+[2014-10-13 22:58:58,293]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.1', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,293]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.3', 'Query', 2720, None)>
+[2014-10-13 22:58:58,293]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received request from client: (reqid= 1.client1.2, operation=Deposit, accNum=63789, amount=964)
+[2014-10-13 22:58:58,294]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.1', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,294]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,294]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.3', 'Query', 2720, None)>
+[2014-10-13 22:58:58,294]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::processed request for reqid=1.client1.2
+[2014-10-13 22:58:58,295]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.1, outcome=Outcome.Processed,balance= 0
+[2014-10-13 22:58:58,295]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::sending sync to successor for reqid = 1.client1.2
+[2014-10-13 22:58:58,295]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.4, operation=Deposit, accNum=82625, amount=292)
+[2014-10-13 22:58:58,295]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::shashi::received query request from client: (reqid =1.client1.3, operation = Query, accNum =2720)
+[2014-10-13 22:58:58,296]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.4', 'Deposit', 82625, 292)>
+[2014-10-13 22:58:58,296]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.3, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 22:58:58,296]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.2', 'Deposit', 63789, 964, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,296]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.2', 'Deposit', 63789, 964, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,297]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.3', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,297]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.5, operation=Withdraw, accNum=22448, amount=924)
+[2014-10-13 22:58:58,297]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 26384)
+[2014-10-13 22:58:58,297]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.4', 'Deposit', 82625, 292)>
+[2014-10-13 22:58:58,298]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,298]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.5', 'Withdraw', 22448, 924)>
+[2014-10-13 22:58:58,298]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received sync : (reqid= 1.client1.2, operation=Deposit, accNum=63789, amount=964)
+[2014-10-13 22:58:58,298]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.3', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,298]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received request from client: (reqid= 1.client1.4, operation=Deposit, accNum=82625, amount=292)
+[2014-10-13 22:58:58,299]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending sync to successor for reqid = 1.client1.2
+[2014-10-13 22:58:58,299]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::processed request for reqid=1.client1.4
+[2014-10-13 22:58:58,299]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.3, outcome=Outcome.Processed,balance= 0
+[2014-10-13 22:58:58,299]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::sending sync to successor for reqid = 1.client1.4
+[2014-10-13 22:58:58,300]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.6, operation=Query, accNum=93877, amount=None)
+[2014-10-13 22:58:58,300]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.2', 'Deposit', 63789, 964, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,300]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.2', 'Deposit', 63789, 964, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,300]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.4', 'Deposit', 82625, 292, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,300]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.6', 'Query', 93877, None)>
+[2014-10-13 22:58:58,301]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.4', 'Deposit', 82625, 292, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,301]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,301]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.7, operation=Query, accNum=7394, amount=None)
+[2014-10-13 22:58:58,302]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.5', 'Withdraw', 22448, 924)>
+[2014-10-13 22:58:58,301]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::received sync : (reqid= 1.client1.2, operation=Deposit, accNum=63789, amount=964)
+[2014-10-13 22:58:58,302]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 26384)
+[2014-10-13 22:58:58,302]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending ack to predecessor for reqid = 1.client1.2
+[2014-10-13 22:58:58,303]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received sync : (reqid= 1.client1.4, operation=Deposit, accNum=82625, amount=292)
+[2014-10-13 22:58:58,303]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.7', 'Query', 7394, None)>
+[2014-10-13 22:58:58,303]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending sync to successor for reqid = 1.client1.4
+[2014-10-13 22:58:58,303]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.2', 'Deposit', 63789, 964, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,303]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received request from client: (reqid= 1.client1.5, operation=Withdraw, accNum=22448, amount=924)
+[2014-10-13 22:58:58,304]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::processed request for reqid=1.client1.5
+[2014-10-13 22:58:58,304]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.8, operation=Query, accNum=20641, amount=None)
+[2014-10-13 22:58:58,304]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.4', 'Deposit', 82625, 292, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,304]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::sending sync to successor for reqid = 1.client1.5
+[2014-10-13 22:58:58,305]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,305]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.8', 'Query', 20641, None)>
+[2014-10-13 22:58:58,305]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.2, outcome= Outcome.Processed, balance = 964)
+[2014-10-13 22:58:58,305]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.2', 'Deposit', 63789, 964, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,305]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.5', 'Withdraw', 22448, 924, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,306]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,306]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.2', <Outcome.Processed: 1>, 964)>
+[2014-10-13 22:58:58,306]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.9, operation=Withdraw, accNum=61379, amount=236)
+[2014-10-13 22:58:58,306]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received Ack from successor for reqid = 1.client1.2
+[2014-10-13 22:58:58,307]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 26384)
+[2014-10-13 22:58:58,307]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending ack predecessor for reqid = 1.client1.2
+[2014-10-13 22:58:58,307]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.9', 'Withdraw', 61379, 236)>
+[2014-10-13 22:58:58,307]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.6', 'Query', 93877, None)>
+[2014-10-13 22:58:58,307]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,307]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.9', 'Withdraw', 61379, 236)>
+[2014-10-13 22:58:58,308]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.2', <Outcome.Processed: 1>, 964)>
+[2014-10-13 22:58:58,308]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.2', 'Deposit', 63789, 964, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,308]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::shashi::received query request from client: (reqid =1.client1.6, operation = Query, accNum =93877)
+[2014-10-13 22:58:58,308]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.6, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 22:58:58,308]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.2, outcome=Outcome.Processed,balance= 964
+[2014-10-13 22:58:58,309]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received request from client: (reqid= 1.client1.9, operation=Withdraw, accNum=61379, amount=236)
+[2014-10-13 22:58:58,309]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,309]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::processed request for reqid=1.client1.9
+[2014-10-13 22:58:58,309]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1:: sending request to bank (reqid= 1.client1.10, operation=Withdraw, accNum=16448, amount=707)
+[2014-10-13 22:58:58,309]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.5', 'Withdraw', 22448, 924, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,310]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.6', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,310]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::sending sync to successor for reqid = 1.client1.9
+[2014-10-13 22:58:58,310]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.10', 'Withdraw', 16448, 707)>
+[2014-10-13 22:58:58,311]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.7', 'Query', 7394, None)>
+[2014-10-13 22:58:58,311]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.9', 'Withdraw', 61379, 236, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,311]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,311]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received sync : (reqid= 1.client1.5, operation=Withdraw, accNum=22448, amount=924)
+[2014-10-13 22:58:58,312]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.6', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,312]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending sync to successor for reqid = 1.client1.5
+[2014-10-13 22:58:58,312]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::shashi::received query request from client: (reqid =1.client1.7, operation = Query, accNum =7394)
+[2014-10-13 22:58:58,312]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.2', 'Deposit', 63789, 964, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,312]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 26384)
+[2014-10-13 22:58:58,312]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.7, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 22:58:58,313]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.6, outcome=Outcome.Processed,balance= 0
+[2014-10-13 22:58:58,313]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.5', 'Withdraw', 22448, 924, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,313]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.7', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,313]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.7', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,313]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received Ack from successor for reqid = 1.client1.2
+[2014-10-13 22:58:58,314]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.10', 'Withdraw', 16448, 707)>
+[2014-10-13 22:58:58,314]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.4', 'Deposit', 82625, 292, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,314]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.9', 'Withdraw', 61379, 236, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,314]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.7, outcome=Outcome.Processed,balance= 0
+[2014-10-13 22:58:58,315]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,315]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,315]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received request from client: (reqid= 1.client1.10, operation=Withdraw, accNum=16448, amount=707)
+[2014-10-13 22:58:58,315]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::received sync : (reqid= 1.client1.4, operation=Deposit, accNum=82625, amount=292)
+[2014-10-13 22:58:58,315]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::processed request for reqid=1.client1.10
+[2014-10-13 22:58:58,316]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending ack to predecessor for reqid = 1.client1.4
+[2014-10-13 22:58:58,315]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received sync : (reqid= 1.client1.9, operation=Withdraw, accNum=61379, amount=236)
+[2014-10-13 22:58:58,316]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::sending sync to successor for reqid = 1.client1.10
+[2014-10-13 22:58:58,316]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending sync to successor for reqid = 1.client1.9
+[2014-10-13 22:58:58,317]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.4', 'Deposit', 82625, 292, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,317]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.10', 'Withdraw', 16448, 707, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,317]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.9', 'Withdraw', 61379, 236, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,317]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,317]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.4, outcome= Outcome.Processed, balance = 292)
+[2014-10-13 22:58:58,318]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 26384)
+[2014-10-13 22:58:58,318]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,318]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.4', 'Deposit', 82625, 292, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,318]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.4', <Outcome.Processed: 1>, 292)>
+[2014-10-13 22:58:58,318]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.4', <Outcome.Processed: 1>, 292)>
+[2014-10-13 22:58:58,319]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received Ack from successor for reqid = 1.client1.4
+[2014-10-13 22:58:58,319]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending ack predecessor for reqid = 1.client1.4
+[2014-10-13 22:58:58,319]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.4, outcome=Outcome.Processed,balance= 292
+[2014-10-13 22:58:58,319]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 37818)> msg:('1.client1.8', 'Query', 20641, None)>
+[2014-10-13 22:58:58,320]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,320]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.4', 'Deposit', 82625, 292, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,320]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.4', 'Deposit', 82625, 292, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,320]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::shashi::received query request from client: (reqid =1.client1.8, operation = Query, accNum =20641)
+[2014-10-13 22:58:58,321]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 26384)> msg:('Sync', '1.client1.10', 'Withdraw', 16448, 707, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,321]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.8, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 22:58:58,322]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received Ack from successor for reqid = 1.client1.4
+[2014-10-13 22:58:58,322]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,323]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received sync : (reqid= 1.client1.10, operation=Withdraw, accNum=16448, amount=707)
+[2014-10-13 22:58:58,323]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.8', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,323]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending sync to successor for reqid = 1.client1.10
+[2014-10-13 22:58:58,324]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.5', 'Withdraw', 22448, 924, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,324]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.8', <Outcome.Processed: 1>, 0)>
+[2014-10-13 22:58:58,325]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.8, outcome=Outcome.Processed,balance= 0
+[2014-10-13 22:58:58,325]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::received sync : (reqid= 1.client1.5, operation=Withdraw, accNum=22448, amount=924)
+[2014-10-13 22:58:58,325]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,325]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending ack to predecessor for reqid = 1.client1.5
+[2014-10-13 22:58:58,326]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 32187)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.10', 'Withdraw', 16448, 707, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,326]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.5', 'Withdraw', 22448, 924, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,327]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.5', 'Withdraw', 22448, 924, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,327]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,327]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.5, outcome= Outcome.InsufficientFunds, balance = 0)
+[2014-10-13 22:58:58,328]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received Ack from successor for reqid = 1.client1.5
+[2014-10-13 22:58:58,328]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,328]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending ack predecessor for reqid = 1.client1.5
+[2014-10-13 22:58:58,329]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.5', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,329]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.5', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,329]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.5', 'Withdraw', 22448, 924, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,330]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.5, outcome=Outcome.InsufficientFunds,balance= 0
+[2014-10-13 22:58:58,331]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.5', 'Withdraw', 22448, 924, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,331]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.9', 'Withdraw', 61379, 236, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,332]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received Ack from successor for reqid = 1.client1.5
+[2014-10-13 22:58:58,332]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::received sync : (reqid= 1.client1.9, operation=Withdraw, accNum=61379, amount=236)
+[2014-10-13 22:58:58,332]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,332]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,332]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending ack to predecessor for reqid = 1.client1.9
+[2014-10-13 22:58:58,333]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.9', 'Withdraw', 61379, 236, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,333]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.9', 'Withdraw', 61379, 236, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,334]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.9, outcome= Outcome.InsufficientFunds, balance = 0)
+[2014-10-13 22:58:58,334]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received Ack from successor for reqid = 1.client1.9
+[2014-10-13 22:58:58,335]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,335]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending ack predecessor for reqid = 1.client1.9
+[2014-10-13 22:58:58,335]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.9', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,335]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.9', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,336]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.9', 'Withdraw', 61379, 236, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,336]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.9', 'Withdraw', 61379, 236, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,336]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Sync', '1.client1.10', 'Withdraw', 16448, 707, <Outcome.InsufficientFunds: 3>, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,336]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,336]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.9, outcome=Outcome.InsufficientFunds,balance= 0
+[2014-10-13 22:58:58,337]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received Ack from successor for reqid = 1.client1.9
+[2014-10-13 22:58:58,337]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,337]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::received sync : (reqid= 1.client1.10, operation=Withdraw, accNum=16448, amount=707)
+[2014-10-13 22:58:58,338]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending ack to predecessor for reqid = 1.client1.10
+[2014-10-13 22:58:58,338]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 16321)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.10', 'Withdraw', 16448, 707, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,338]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Ack', '1.client1.10', 'Withdraw', 16448, 707, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,339]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,339]server[('shashis-MacBook-Air.local', 32187)]:INFO: citi::tail(server3)::sending reply to client: (reqid = 1.client1.10, outcome= Outcome.InsufficientFunds, balance = 0)
+[2014-10-13 22:58:58,339]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::received Ack from successor for reqid = 1.client1.10
+[2014-10-13 22:58:58,340]server[('shashis-MacBook-Air.local', 16321)]:INFO: citi::server2::sending ack predecessor for reqid = 1.client1.10
+[2014-10-13 22:58:58,340]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 37818)> from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.10', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,340]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 32187)> msg:('Reply', '1.client1.10', <Outcome.InsufficientFunds: 3>, 0)>
+[2014-10-13 22:58:58,341]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 32187)
+[2014-10-13 22:58:58,341]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.10', 'Withdraw', 16448, 707, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,341]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 26384)> from:<server('shashis-MacBook-Air.local', 16321)> msg:('Ack', '1.client1.10', 'Withdraw', 16448, 707, <client('shashis-MacBook-Air.local', 37818)>)>
+[2014-10-13 22:58:58,341]client[('shashis-MacBook-Air.local', 37818)]:INFO: citi::client1::reply from server: (reqid=1.client1.10, outcome=Outcome.InsufficientFunds,balance= 0
+[2014-10-13 22:58:58,342]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 16321)
+[2014-10-13 22:58:58,342]server[('shashis-MacBook-Air.local', 26384)]:INFO: citi::head(server1)::received Ack from successor for reqid = 1.client1.10
+[2014-10-13 22:58:59,737]server[('shashis-MacBook-Air.local', 32187)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 22:58:59,737]server[('shashis-MacBook-Air.local', 16321)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 22:58:59,737]server[('shashis-MacBook-Air.local', 26384)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 22:58:59,737]client[('shashis-MacBook-Air.local', 37818)]:DEBUG: Received KeyboardInterrupt, exiting

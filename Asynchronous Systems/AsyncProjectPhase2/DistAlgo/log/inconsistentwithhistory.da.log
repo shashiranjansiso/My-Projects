@@ -1,0 +1,198 @@
+[2014-10-13 23:01:29,147]da.api:INFO: Running iteration 1 ...
+[2014-10-13 23:01:29,152]runtime.UdpEndPoint(shashis-MacBook-Air.local_39734):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 39734) initialization complete
+[2014-10-13 23:01:29,187]da.api:DEBUG: Current process is ('shashis-MacBook-Air.local', 39734)
+[2014-10-13 23:01:29,187]da.api:DEBUG: Creating 1 instances of <class 'shashi_working.client'>..
+[2014-10-13 23:01:29,191]da.api:DEBUG: 1 instances of client created.
+[2014-10-13 23:01:29,195]runtime.UdpEndPoint(shashis-MacBook-Air.local_25605):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 25605) initialization complete
+[2014-10-13 23:01:29,196]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: Sending id to parent...
+[2014-10-13 23:01:29,199]da.api:DEBUG: Current process is ('shashis-MacBook-Air.local', 39734)
+[2014-10-13 23:01:29,199]da.api:DEBUG: Creating 4 instances of <class 'shashi_working.server'>..
+[2014-10-13 23:01:29,205]runtime.UdpEndPoint(shashis-MacBook-Air.local_27004):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 27004) initialization complete
+[2014-10-13 23:01:29,208]da.api:DEBUG: 4 instances of server created.
+[2014-10-13 23:01:29,209]runtime.UdpEndPoint(shashis-MacBook-Air.local_24536):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 24536) initialization complete
+[2014-10-13 23:01:29,211]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: Sending id to parent...
+[2014-10-13 23:01:29,211]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: Sending id to parent...
+[2014-10-13 23:01:29,211]runtime.UdpEndPoint(shashis-MacBook-Air.local_15646):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 15646) initialization complete
+[2014-10-13 23:01:29,213]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: Sending id to parent...
+[2014-10-13 23:01:29,214]runtime.UdpEndPoint(shashis-MacBook-Air.local_15078):DEBUG: UdpEndPoint ('shashis-MacBook-Air.local', 15078) initialization complete
+[2014-10-13 23:01:29,216]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: Sending id to parent...
+[2014-10-13 23:01:29,218]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: Running setup..
+[2014-10-13 23:01:29,218]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: Running setup..
+[2014-10-13 23:01:29,218]da.api:DEBUG: Starting [<server('shashis-MacBook-Air.local', 24536)>, <server('shashis-MacBook-Air.local', 15646)>, <server('shashis-MacBook-Air.local', 15078)>, <server('shashis-MacBook-Air.local', 27004)>]...
+[2014-10-13 23:01:29,218]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: Running setup..
+[2014-10-13 23:01:29,218]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::server set up called..
+[2014-10-13 23:01:29,218]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::server set up called..
+[2014-10-13 23:01:29,219]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 23:01:29,219]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 23:01:29,219]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::server set up called..
+[2014-10-13 23:01:29,220]da.api:DEBUG: Starting [<client('shashis-MacBook-Air.local', 25605)>]...
+[2014-10-13 23:01:29,220]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 23:01:29,220]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: Running setup..
+[2014-10-13 23:01:29,220]da.api:INFO: Terminating...
+[2014-10-13 23:01:29,220]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: Running setup..
+[2014-10-13 23:01:29,220]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::server set up called..
+[2014-10-13 23:01:29,220]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: set up called...
+[2014-10-13 23:01:29,221]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 23:01:29,221]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: 'start' command received, commencing...
+[2014-10-13 23:01:29,221]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: sending request to bank (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=300)
+[2014-10-13 23:01:29,223]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.1', 'Deposit', 123456, 300)>
+[2014-10-13 23:01:29,223]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.1', 'Deposit', 123456, 300)>
+[2014-10-13 23:01:29,224]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: sending request to bank (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=200)
+[2014-10-13 23:01:29,224]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received request from client: (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=300)
+[2014-10-13 23:01:29,224]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.1', 'Deposit', 123456, 200)>
+[2014-10-13 23:01:29,224]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::processed request for reqid=icici.client1.1
+[2014-10-13 23:01:29,225]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: sending request to bank (reqid= icici.client1.3, operation=Deposit, accNum=123456, amount=1000)
+[2014-10-13 23:01:29,226]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,226]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.3', 'Deposit', 123456, 1000)>
+[2014-10-13 23:01:29,227]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,227]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: sending request to bank (reqid= icici.client1.4, operation=Withdraw, accNum=123456, amount=600)
+[2014-10-13 23:01:29,228]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 24536)
+[2014-10-13 23:01:29,227]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,228]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.1', 'Deposit', 123456, 200)>
+[2014-10-13 23:01:29,228]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.4', 'Withdraw', 123456, 600)>
+[2014-10-13 23:01:29,228]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1:: sending request to bank (reqid= icici.client1.5, operation=Query, accNum=123456, amount=None)
+[2014-10-13 23:01:29,229]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received request from client: (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=200)
+[2014-10-13 23:01:29,229]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=300)
+[2014-10-13 23:01:29,229]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::inconsistent with history for reqid= icici.client1.1
+[2014-10-13 23:01:29,230]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 27004)> from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.5', 'Query', 123456, None)>
+[2014-10-13 23:01:29,230]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,230]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,230]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.5', 'Query', 123456, None)>
+[2014-10-13 23:01:29,231]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,231]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,231]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,231]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::shashi::received query request from client: (reqid =icici.client1.5, operation = Query, accNum =123456)
+[2014-10-13 23:01:29,232]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.3', 'Deposit', 123456, 1000)>
+[2014-10-13 23:01:29,232]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,232]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending reply to client: (reqid = icici.client1.5, outcome= Outcome.Processed, balance = 0)
+[2014-10-13 23:01:29,233]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=300)
+[2014-10-13 23:01:29,233]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 24536)
+[2014-10-13 23:01:29,233]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,233]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=200)
+[2014-10-13 23:01:29,233]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,234]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 25605)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.5', <Outcome.Processed: 1>, 0)>
+[2014-10-13 23:01:29,234]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::InconsistentWithHistory for reqid = icici.client1.1
+[2014-10-13 23:01:29,233]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received request from client: (reqid= icici.client1.3, operation=Deposit, accNum=123456, amount=1000)
+[2014-10-13 23:01:29,234]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,234]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::processed request for reqid=icici.client1.3
+[2014-10-13 23:01:29,235]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::sending sync to successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,235]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.5', <Outcome.Processed: 1>, 0)>
+[2014-10-13 23:01:29,235]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 27004)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,235]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,236]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,236]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 300, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,236]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1::reply from server: (reqid=icici.client1.5, outcome=Outcome.Processed,balance= 0
+[2014-10-13 23:01:29,236]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,237]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,237]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,237]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=300)
+[2014-10-13 23:01:29,237]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,237]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,237]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending ack to predecessor for reqid = icici.client1.1
+[2014-10-13 23:01:29,238]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<client('shashis-MacBook-Air.local', 25605)> msg:('icici.client1.4', 'Withdraw', 123456, 600)>
+[2014-10-13 23:01:29,238]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 24536)
+[2014-10-13 23:01:29,238]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=200)
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received sync : (reqid= icici.client1.3, operation=Deposit, accNum=123456, amount=1000)
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received request from client: (reqid= icici.client1.4, operation=Withdraw, accNum=123456, amount=600)
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::InconsistentWithHistory for reqid = icici.client1.1
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::processed request for reqid=icici.client1.4
+[2014-10-13 23:01:29,239]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending sync to successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,240]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending sync to successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,240]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::sending sync to successor for reqid = icici.client1.4
+[2014-10-13 23:01:29,240]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,240]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending reply to client: (reqid = icici.client1.1, outcome= Outcome.Processed, balance = 300)
+[2014-10-13 23:01:29,241]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,241]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 25605)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.1', <Outcome.Processed: 1>, 300)>
+[2014-10-13 23:01:29,241]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,241]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 27004)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,242]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,242]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.1', <Outcome.Processed: 1>, 300)>
+[2014-10-13 23:01:29,242]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,242]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 24536)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,242]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.1', 'Deposit', 123456, 200, <Outcome.InconsistentWithHistory: 2>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,243]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,243]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1::reply from server: (reqid=icici.client1.1, outcome=Outcome.Processed,balance= 300
+[2014-10-13 23:01:29,243]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,243]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::received sync : (reqid= icici.client1.1, operation=Deposit, accNum=123456, amount=200)
+[2014-10-13 23:01:29,244]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 24536)
+[2014-10-13 23:01:29,243]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received Ack from successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,244]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received sync : (reqid= icici.client1.4, operation=Withdraw, accNum=123456, amount=600)
+[2014-10-13 23:01:29,244]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::InconsistentWithHistory for reqid = icici.client1.1
+[2014-10-13 23:01:29,244]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending ack predecessor for reqid = icici.client1.1
+[2014-10-13 23:01:29,244]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending sync to successor for reqid = icici.client1.4
+[2014-10-13 23:01:29,244]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending reply to client: (reqid = icici.client1.1, outcome= Outcome.InconsistentWithHistory, balance = 300)
+[2014-10-13 23:01:29,245]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,245]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 25605)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.1', <Outcome.InconsistentWithHistory: 2>, 300)>
+[2014-10-13 23:01:29,245]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,246]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.1', <Outcome.InconsistentWithHistory: 2>, 300)>
+[2014-10-13 23:01:29,246]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,246]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,246]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,246]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,247]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,246]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1::reply from server: (reqid=icici.client1.1, outcome=Outcome.InconsistentWithHistory,balance= 300
+[2014-10-13 23:01:29,247]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received sync : (reqid= icici.client1.3, operation=Deposit, accNum=123456, amount=1000)
+[2014-10-13 23:01:29,247]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending sync to successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,247]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received Ack from successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,248]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending ack predecessor for reqid = icici.client1.1
+[2014-10-13 23:01:29,248]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 27004)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,248]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.3', 'Deposit', 123456, 1000, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,249]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,249]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.1', 'Deposit', 123456, 300, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,249]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,250]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,250]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::received sync : (reqid= icici.client1.3, operation=Deposit, accNum=123456, amount=1000)
+[2014-10-13 23:01:29,250]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,250]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending ack to predecessor for reqid = icici.client1.3
+[2014-10-13 23:01:29,250]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received Ack from successor for reqid = icici.client1.1
+[2014-10-13 23:01:29,250]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received sync : (reqid= icici.client1.4, operation=Withdraw, accNum=123456, amount=600)
+[2014-10-13 23:01:29,251]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending sync to successor for reqid = icici.client1.4
+[2014-10-13 23:01:29,251]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,252]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,252]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 27004)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,252]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending reply to client: (reqid = icici.client1.3, outcome= Outcome.Processed, balance = 1300)
+[2014-10-13 23:01:29,253]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,253]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,253]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 25605)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.3', <Outcome.Processed: 1>, 1300)>
+[2014-10-13 23:01:29,254]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received Ack from successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,254]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.3', <Outcome.Processed: 1>, 1300)>
+[2014-10-13 23:01:29,254]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending ack predecessor for reqid = icici.client1.3
+[2014-10-13 23:01:29,254]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Sync', 'icici.client1.4', 'Withdraw', 123456, 600, <Outcome.Processed: 1>, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,255]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1::reply from server: (reqid=icici.client1.3, outcome=Outcome.Processed,balance= 1300
+[2014-10-13 23:01:29,256]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,256]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::received sync : (reqid= icici.client1.4, operation=Withdraw, accNum=123456, amount=600)
+[2014-10-13 23:01:29,256]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,257]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending ack to predecessor for reqid = icici.client1.4
+[2014-10-13 23:01:29,257]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,258]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,258]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15078)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,258]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received Ack from successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,258]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending ack predecessor for reqid = icici.client1.3
+[2014-10-13 23:01:29,259]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,259]server[('shashis-MacBook-Air.local', 27004)]:INFO: tfcu::tail(server4)::sending reply to client: (reqid = icici.client1.4, outcome= Outcome.Processed, balance = 700)
+[2014-10-13 23:01:29,260]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,260]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::received Ack from successor for reqid = icici.client1.4
+[2014-10-13 23:01:29,260]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,260]server[('shashis-MacBook-Air.local', 15078)]:INFO: tfcu::server3::sending ack predecessor for reqid = icici.client1.4
+[2014-10-13 23:01:29,261]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: triggering event <SentEvent time:None to:<client('shashis-MacBook-Air.local', 25605)> from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.4', <Outcome.Processed: 1>, 700)>
+[2014-10-13 23:01:29,262]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 15646)> from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,262]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.3', 'Deposit', 123456, 1000, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,262]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 27004)> msg:('Reply', 'icici.client1.4', <Outcome.Processed: 1>, 700)>
+[2014-10-13 23:01:29,263]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received Ack from successor for reqid = icici.client1.3
+[2014-10-13 23:01:29,263]client[('shashis-MacBook-Air.local', 25605)]:INFO: tfcu::client1::reply from server: (reqid=icici.client1.4, outcome=Outcome.Processed,balance= 700
+[2014-10-13 23:01:29,264]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,264]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 27004)
+[2014-10-13 23:01:29,264]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15078)
+[2014-10-13 23:01:29,264]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15078)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,265]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::received Ack from successor for reqid = icici.client1.4
+[2014-10-13 23:01:29,266]server[('shashis-MacBook-Air.local', 15646)]:INFO: tfcu::server2::sending ack predecessor for reqid = icici.client1.4
+[2014-10-13 23:01:29,267]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: triggering event <SentEvent time:None to:<server('shashis-MacBook-Air.local', 24536)> from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,267]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: triggering event <ReceivedEvent time:None to:None from:<server('shashis-MacBook-Air.local', 15646)> msg:('Ack', 'icici.client1.4', 'Withdraw', 123456, 600, <client('shashis-MacBook-Air.local', 25605)>)>
+[2014-10-13 23:01:29,268]da.api:DEBUG: Unknown proc: ('shashis-MacBook-Air.local', 15646)
+[2014-10-13 23:01:29,268]server[('shashis-MacBook-Air.local', 24536)]:INFO: tfcu::head(server1)::received Ack from successor for reqid = icici.client1.4
+[2014-10-13 23:01:30,567]server[('shashis-MacBook-Air.local', 15646)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 23:01:30,567]server[('shashis-MacBook-Air.local', 24536)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 23:01:30,567]server[('shashis-MacBook-Air.local', 15078)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 23:01:30,567]server[('shashis-MacBook-Air.local', 27004)]:DEBUG: Received KeyboardInterrupt, exiting
+[2014-10-13 23:01:30,570]client[('shashis-MacBook-Air.local', 25605)]:DEBUG: Received KeyboardInterrupt, exiting

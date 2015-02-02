@@ -1,0 +1,347 @@
+import sys, configparser, random
+from enum import Enum, unique
+class account(object):
+       def __init__(self, accNum = 0, balance = 0):
+               self.accountNum = accNum
+               self.balance = balance
+
+       def getBalance(self):
+               return self.balance
+       
+       def deposit(self, amount):
+               self.balance = self.balance + amount
+       
+       def withdraw(self, amount):
+               if self.balance >= amount:
+                      self.balance = self.balance - amount
+                      return True
+               else:
+                      return False 			
+
+class Outcome(Enum):
+	Processed = 1
+	InconsistentWithHistory = 2
+	InsufficientFunds = 3
+
+class RequestType(Enum):
+	Deposit = 1
+	Withdraw = 2
+	GetBalance = 3	
+	
+class client(process):
+	def setup(head, tail, requests, name, timemax):
+		self.name = name
+		self.head = head
+		self.tail = tail
+		self.accNum = 123
+		self.amount = 1000
+		self.requests = requests	
+		self.q = set()
+		output(self.name + " set up called...")
+		
+	def mutex(rid,up,acc,am, task):
+		--start
+		reqc = logical_clock()
+		q.add((reqc, self.id, rid))
+		if up == RequestType.GetBalance:
+			update = 'Query'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=tail)
+		
+		elif up == RequestType.Deposit:
+			update = 'Deposit'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=head)
+		else:
+			update = 'Withdraw'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=head)
+	def main():
+		def announce():
+			output("in cs ")
+		--start
+		for (rid,up,acc,am) in requests:
+			mutex(rid,up,acc,am,announce)
+		--end
+		#output(self.name + "terminating..")
+		if await(received(('Reply',id, id, id))):
+			output("received reply")
+
+	def recv(msg=('Reply',reqid, outcome,balance), from_=source):
+		output(self.name + "reply from server: (reqid=" + reqid + ", outcome=" + str(outcome) + ",balance= " + str(balance))
+
+class server(process):
+	def setup(name, role, successor, predecessor, bank):
+		self.name = name
+		self.role = role	
+		self.successor = successor
+		self.predecessor = predecessor
+		self.client = None
+		self.pending = set()
+		self.completed = set()
+		self.bank = bank	
+		self.outcomeHistory = {}
+		output(self.name + "server set up called..")
+	def main():
+		--sync
+		if self.role == 'tail':
+			if await(received((id, 'Query', id))): pass
+		elif self.role == 'head':
+			if await(received((id, 'Deposit',id,id)) or received((id, 'Withdraw',id,id))): 
+				output(self.name + ":main received request from client")
+		else:
+			if await(received(('Sync',id,id,id,id,id,id))):pass
+		#--release
+
+	#head deposit and withdraw requests from client
+	def recv(msg=(reqid,update,accNum, amount), from_=client):	
+		if update == 'Query':
+			self.handleQuery(reqid, 'Query',accNum,amount,client)
+			return
+		output(self.name + "received request from client: (reqid= " + reqid + ", operation=" + update +", accNum=" + str(accNum) + ", amount=" + str(amount) + ")")
+		outcome = None
+		#check for duplicate requests
+		if (reqid,update,accNum,amount,client) in completed or (reqid,update,accNum,amount,client) in pending:
+			#output(self.name + "dulicate request")	
+			(outcome,balance) = outcomeHistory[reqid]	
+			#outcome = Outcome.Processed
+			#even if duplicate add to pending queue
+			pending.add((reqid,update,accNum,amount,client))
+		elif (some((rid, up, ac, am, cl) in pending, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+			output(self.name + "inconsistent with history for reqid= " + reqid)
+			outcome = Outcome.InconsistentWithHistory
+		elif (some((rid, up, ac, am, cl) in completed, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+			output(self.name + "inconsistent with history for reqid = " + reqid)
+			outcome = Outcome.InconsistentWithHistory
+		else:
+			pending.add((reqid,update,accNum,amount,client))	
+			outcome = Outcome.Processed
+			if update == 'Deposit':
+				bank.deposit(accNum, amount)
+			elif update == 'Withdraw':
+				result = bank.withdraw(accNum, amount)
+				if result == False:
+					outcome = Outcome.InsufficientFunds
+			outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			output(self.name + "processed request for reqid=" + reqid) 
+		if self.role == 'head' and self.successor is None:
+			balance = bank.getBalance(accNum)
+			if outcome != Outcome.InconsistentWithHistory:
+				pending.remove((reqid,update,accNum,amount,client))
+				completed.add((reqid, update,accNum,amount,client))
+				outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+			send(('Reply',reqid, outcome, balance), to=client)
+		else: 
+			output(self.name + "sending sync to successor for reqid = " + reqid)
+			send(('Sync',reqid, update, accNum, amount, outcome, client), to=successor)
+
+	#tail:: query or getbalance() request from client
+	def handleQuery(reqid, query, accNum, junk,client):
+		output(self.name + "shashi::received query request from client: (reqid =" + reqid + ", operation = Query, accNum =" + str(accNum) + ")")
+		balance = bank.getBalance(accNum)
+		output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(Outcome.Processed) + ", balance = " + str(balance) + ")")
+		send(('Reply', reqid, Outcome.Processed, balance), to=client)	
+	
+	def recv(msg=('Sync',reqid,update, accNum, amount, outcome, client), from_=source):
+		output(self.name + "received sync : (reqid= " + reqid + ", operation=" + update +", accNum=" + str(accNum) + ", amount=" + str(amount) + ")")
+		if outcome == Outcome.InconsistentWithHistory:
+			output(self.name + "InconsistentWithHistory for reqid = " + reqid)	
+		elif (reqid,update,accNum,amount,client) not in completed and (reqid,update,accNum,amount,client) not in pending:	
+			pending.add((reqid,update,accNum,amount,client))
+			if update == 'Deposit':
+				bank.deposit(accNum, amount)
+			elif update == "Withdraw":
+				result = bank.withdraw(accNum, amount)
+				if result == False:
+					outcome = Outcome.InsufficientFunds
+					#output(self.name + "InsufficientFunds for reqid=" + reqid)
+				#else:
+					#output(self.name + "processed request for reqid=" + reqid)
+			outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			#output(self.name + "processed request for reqid=" + reqid)
+		else:
+			(outcome, balance) = outcomeHistory[reqid]
+			#outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			pending.add((reqid,update,accNum,amount,client))
+			send(('Reply',reqid,outcome,balance), to=client)
+			send(('Ack',reqid, update, accNum, amount, outcome, client), to=predecessor)
+			return
+			#output(self.name + "duplicate request for reqid = " + reqid)
+		if self.role == 'tail':
+			if outcome != Outcome.InconsistentWithHistory:
+				outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+				completed.add((reqid,update,accNum,amount,client))
+				pending.remove((reqid,update,accNum,amount,client))
+				output(self.name + "sending ack to predecessor for reqid = " + reqid)
+				send(('Ack',reqid, update, accNum, amount, outcome, client), to=predecessor)
+			balance = bank.getBalance(accNum)
+			output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+			send(('Reply',reqid,outcome,balance), to=client)
+		else:	
+			output(self.name + "sending sync to successor for reqid = " + reqid)
+			send(('Sync',reqid,update, accNum, amount, outcome, client), to=successor)
+
+	def recv(msg=('Ack',reqid, update, accNum, amount, outcome, client), from_=source):
+		output(self.name + "received Ack from successor for reqid = " + reqid)
+		if (reqid, update, accNum, amount, client) in pending:
+			pending.remove((reqid, update, accNum, amount, client))
+		outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+		completed.add((reqid, update,accNum,amount,outcome, client))
+		if self.role != 'head':
+			output(self.name + "sending ack predecessor for reqid = " + reqid)	
+			send(('Ack',reqid, update, accNum, amount, client), to=predecessor)
+
+class Bank(object):
+        def __init__(self, bankname):
+                self.bankName = bankname
+                self.accountList = []
+                #self.servers = servers
+                self.servers= []
+                self.head = None
+                self.tail = None
+
+        def setupServers(self, nservers):
+                #config(channel= 'fifo')
+                servers = list(new(server, num = nservers))
+                for j,s in enumerate(servers):
+                        if j == 0:
+                              if len(servers) > 1:
+                                    successor = servers[j+1]
+                              else:
+                                    successor = None
+                              servername = self.bankName + "::head(server" + str(j+1) + ")::"
+                              setup(s, [servername, 'head', successor, None, self])
+                              self.head = s
+                        elif j == nservers - 1:
+                              predecessor = servers[j-1]
+                              servername = self.bankName + "::tail(server" + str(j+1) + ")::"
+                              setup(s, [servername, 'tail', None, predecessor, self])
+                              self.tail = s
+                        else:
+                              servername = self.bankName + "::server" + str(j+1) + "::"
+                              successor = servers[j+1]
+                              predecessor = servers[j-1]
+                              setup(s, [servername, 'normal', successor, predecessor, self])
+                start(servers)
+         
+        def getHead(self):
+                 return self.head
+	
+        def getTail(self):
+                 return self.tail
+
+        def openAccount(self, accNum):
+                acc = account(accNum)
+                self.accountList.append(acc)
+                return acc
+
+        def getAccount(self, accNum):
+                for account in self.accountList:
+                        if account.accountNum == accNum:
+                              return account
+                return None
+
+        def deposit(self, accNum, amount):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                account.deposit(amount)
+
+        def withdraw(self, accNum, amount):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                return account.withdraw(amount)
+
+        def getBalance(self, accNum):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                return account.getBalance()
+
+def main():
+	name = "ChainReplication::"
+	print(name + "reading config file...")
+	seq=1
+	parser = configparser.SafeConfigParser()
+	parser.read('config.ini')
+	numBank = int(parser.get('config_test', 'numBank'))
+	config(channel=('unfifo', 'unreliable'))	
+	for t in range(1,numBank+1):
+		bankname = parser.get('config_test', 'bank' + str(t))
+		print(name + "bank name:" + bankname)
+		#start servers and clients
+		nclients = int(parser.get('config_test', 'bank' + str(t) + 'client'))
+		nservers = int(parser.get('config_test', 'bank' + str(t) + 'servers'))
+		#config(channel=('unfifo', 'unreliable'))
+		clients = list(new(client, num = nclients))
+		bank = Bank(bankname)
+		bank.setupServers(nservers)
+		head = bank.getHead()
+		tail = bank.getTail() 
+		#send auto requests
+		bankreqType = parser.get('config_test', 'bank' + str(t) + 'reqType')
+		
+		for i in range(1,nclients+1):
+			requestList = []
+			if bankreqType == 'auto':
+				numReq = int(parser.get('config_test', 'bank' + str(t) + 'numReq'))
+				numGetBalance = float(parser.get('config_test', 'bank' + str(t) + 'probGetBalance')) * numReq
+				numDeposit = float(parser.get('config_test', 'bank' + str(t) + 'probDeposit')) * numReq;
+				numWithdraw = float(parser.get('config_test', 'bank' + str(t) + 'probWithdraw')) * numReq;
+				accNo = random.randint(1, 100000)
+				amt = random.randint(1, 1000)
+
+				while numReq!=0:
+					select = random.randint(1, 100000)%3
+					accNo = random.randint(1, 100000)
+					amt = random.randint(1, 1000)
+					if (numDeposit > 0 and select==0):
+						reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.Deposit,accNo, amt))
+						numDeposit = numDeposit-1
+						numReq=numReq-1
+						seq = seq+1
+					if (numWithdraw > 0 and select==1):
+						reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.Withdraw,accNo, amt))
+						numWithdraw = numWithdraw-1
+						numReq=numReq-1
+						seq = seq+1
+					if (numGetBalance > 0 and select==2):
+						reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.GetBalance,accNo, None))
+						numGetBalance = numGetBalance-1
+						numReq=numReq-1
+						seq = seq+1
+			elif bankreqType == 'itemized':
+				bankitemisedReq = parser.get('config_test', 'bank' + str(t) + 'client' + str(i) + 'itemisedReq')
+				reqlist = bankitemisedReq.split(';')
+				
+				for m in range(len(reqlist)):
+					reqtype=reqlist[m].split(":")
+					operation = reqtype[0]
+					if operation == 'getBalance':
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqargs[1], RequestType.GetBalance, int(reqargs[0]), None))
+						#bank.getBalance(int(reqargs[0]))
+						#seq = seq+1
+					if operation == 'deposit':
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqargs[2], RequestType.Deposit, int(reqargs[0]), int(reqargs[1])))
+						#bank.deposit(int(reqargs[0]), int(reqargs[1]))
+						#seq = seq+1
+					if operation == 'withdraw':		
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						#bank.deposit(int(reqargs[0]), int(reqargs[1]))
+						requestList.append((reqargs[2], RequestType.Withdraw, int(reqargs[0]), int(reqargs[1])))
+						#seq = seq+1
+			clientname = bankname + "::client" + str(i) + "::"
+			c = clients[i-1]
+			setup(c, [head, tail, requestList, clientname, 10])	
+		start(clients)			
+

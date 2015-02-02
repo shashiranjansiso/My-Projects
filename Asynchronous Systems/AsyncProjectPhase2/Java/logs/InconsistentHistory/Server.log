@@ -1,0 +1,77 @@
+2014-10-14 00:25:39,881 [ProcessSpawn.java:main:38] - ProcessSpawnNum of Banks for initiation: 2
+2014-10-14 00:25:39,883 [ProcessSpawn.java:main:44] - ProcessSpawnbankname: citi
+2014-10-14 00:25:39,883 [ProcessSpawn.java:main:48] - ProcessSpawnchainLength: 3
+2014-10-14 00:25:39,902 [Server.java:main:543] - citi::tail::server3::  Server started as TAIL
+2014-10-14 00:25:39,907 [Server.java:main:531] - citi::tail::server3:: Udp server at ip 127.0.0.1 port: 9878 started..
+2014-10-14 00:25:39,919 [Server.java:main:543] - citi::::server2::  Server started as NORMAL
+2014-10-14 00:25:39,922 [Server.java:main:543] - citi::head::server1::  Server started as HEAD
+2014-10-14 00:25:39,922 [Server.java:main:504] - citi::head::server1:: HEAD::udp for client started at ip 127.0.0.1 port: 9876
+2014-10-14 00:25:39,923 [ProcessSpawn.java:main:44] - ProcessSpawnbankname: tfcu
+2014-10-14 00:25:39,923 [ProcessSpawn.java:main:48] - ProcessSpawnchainLength: 2
+2014-10-14 00:25:39,924 [Server.java:main:543] - tfcu::tail::server2::  Server started as TAIL
+2014-10-14 00:25:39,924 [Server.java:main:531] - tfcu::tail::server2:: Udp server at ip 127.0.0.1 port: 9880 started..
+2014-10-14 00:25:39,925 [Server.java:main:543] - tfcu::head::server1::  Server started as HEAD
+2014-10-14 00:25:39,925 [Server.java:main:504] - tfcu::head::server1:: HEAD::udp for client started at ip 127.0.0.1 port: 9879
+2014-10-14 00:25:48,720 [Server.java:pool-2-thread-1:368] - citi::tail::server3:: Received client Query request..127.0.0.1 port 54635
+2014-10-14 00:25:48,725 [Server.java:pool-6-thread-1:425] - citi::head::server1:: Received client Update request..127.0.0.1 port 54636
+2014-10-14 00:25:48,968 [Server.java:pool-6-thread-1:359] - citi::head::server1:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:48,968 [Server.java:pool-2-thread-1:399] - citi::tail::server3:: tail account is null
+2014-10-14 00:25:48,969 [Server.java:pool-2-thread-1:340] - citi::tail::server3:: New Account created with account no : 123456
+2014-10-14 00:25:48,969 [Server.java:pool-6-thread-1:340] - citi::head::server1:: New Account created with account no : 123456
+2014-10-14 00:25:48,971 [Server.java:pool-6-thread-1:248] - citi::head::server1:: ReqId: icici.client1.2-Deposit operation complete new balance is : 300.0
+2014-10-14 00:25:48,971 [Server.java:pool-6-thread-1:433] - citi::head::server1:: Received Request No -icici.client1.2
+2014-10-14 00:25:48,972 [Server.java:pool-6-thread-1:275] - citi::head::server1:: ReqId: icici.client1.2Sendin sync to successor
+2014-10-14 00:25:48,990 [Server.java:pool-2-thread-1:420] - citi::tail::server3:: Client qurey replied..
+2014-10-14 00:25:49,007 [Server.java:pool-6-thread-2:425] - citi::head::server1:: Received client Update request..127.0.0.1 port 54637
+2014-10-14 00:25:49,009 [Server.java:pool-3-thread-1:450] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"icici.client1.2","accountNum":123456,"amount":300.0,"replyPort":0}
+2014-10-14 00:25:49,009 [Server.java:pool-6-thread-2:359] - citi::head::server1:: ProcessRequest method called..icici.client1.3
+2014-10-14 00:25:49,010 [Server.java:pool-6-thread-2:433] - citi::head::server1:: Received Request No -icici.client1.3
+2014-10-14 00:25:49,010 [Server.java:pool-6-thread-2:275] - citi::head::server1:: ReqId: icici.client1.3Sendin sync to successor
+2014-10-14 00:25:49,012 [Server.java:pool-3-thread-1:359] - citi::::server2:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:49,012 [Server.java:pool-3-thread-1:340] - citi::::server2:: New Account created with account no : 123456
+2014-10-14 00:25:49,012 [Server.java:pool-3-thread-1:248] - citi::::server2:: ReqId: icici.client1.2-Deposit operation complete new balance is : 300.0
+2014-10-14 00:25:49,012 [Server.java:pool-3-thread-1:275] - citi::::server2:: ReqId: icici.client1.2Sendin sync to successor
+2014-10-14 00:25:49,012 [Server.java:pool-6-thread-1:425] - citi::head::server1:: Received client Update request..127.0.0.1 port 54638
+2014-10-14 00:25:49,014 [Server.java:pool-6-thread-1:359] - citi::head::server1:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:49,015 [Server.java:pool-6-thread-1:248] - citi::head::server1:: ReqId: icici.client1.2-Deposit operation complete new balance is : 800.0
+2014-10-14 00:25:49,015 [Server.java:pool-6-thread-1:433] - citi::head::server1:: Received Request No -icici.client1.2
+2014-10-14 00:25:49,016 [Server.java:pool-6-thread-1:275] - citi::head::server1:: ReqId: icici.client1.2Sendin sync to successor
+2014-10-14 00:25:49,016 [Server.java:pool-1-thread-1:450] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"icici.client1.2","accountNum":123456,"amount":300.0,"replyPort":0}
+2014-10-14 00:25:49,018 [Server.java:pool-1-thread-1:359] - citi::tail::server3:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:49,019 [Server.java:pool-1-thread-1:248] - citi::tail::server3:: ReqId: icici.client1.2-Deposit operation complete new balance is : 300.0
+2014-10-14 00:25:49,019 [Server.java:pool-1-thread-1:475] - citi::tail::server3::  ReqId: icici.client1.2 Sending reply to client and ack to predecessor
+2014-10-14 00:25:49,019 [Server.java:pool-1-thread-1:292] - citi::tail::server3::  ReqId: icici.client1.2Reply to client : /127.0.0.1 port:9999
+2014-10-14 00:25:49,025 [Server.java:pool-3-thread-2:450] - citi::::server2:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"icici.client1.3","accountNum":123456,"amount":600.0,"replyPort":0}
+2014-10-14 00:25:49,027 [Server.java:pool-1-thread-1:317] - citi::tail::server3:: ReplyToClient success
+2014-10-14 00:25:49,028 [Server.java:pool-1-thread-1:103] - citi::tail::server3:: Sending ack to predecessor
+2014-10-14 00:25:49,028 [Server.java:pool-3-thread-2:359] - citi::::server2:: ProcessRequest method called..icici.client1.3
+2014-10-14 00:25:49,028 [Server.java:pool-3-thread-2:275] - citi::::server2:: ReqId: icici.client1.3Sendin sync to successor
+2014-10-14 00:25:49,031 [Server.java:pool-3-thread-3:450] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"icici.client1.2","accountNum":123456,"amount":500.0,"replyPort":0}
+2014-10-14 00:25:49,033 [Server.java:pool-3-thread-3:359] - citi::::server2:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:49,034 [Server.java:pool-3-thread-3:248] - citi::::server2:: ReqId: icici.client1.2-Deposit operation complete new balance is : 800.0
+2014-10-14 00:25:49,034 [Server.java:pool-3-thread-3:275] - citi::::server2:: ReqId: icici.client1.2Sendin sync to successor
+2014-10-14 00:25:49,037 [Server.java:pool-4-thread-3:490] - citi::::server2:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,037 [Server.java:pool-4-thread-3:103] - citi::::server2:: Sending ack to predecessor
+2014-10-14 00:25:49,039 [Server.java:pool-1-thread-3:450] - citi::tail::server3:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"icici.client1.3","accountNum":123456,"amount":600.0,"replyPort":0}
+2014-10-14 00:25:49,040 [Server.java:pool-5-thread-4:490] - citi::head::server1:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,041 [Server.java:pool-5-thread-4:495] - citi::head::server1:: Ack received at HEAD
+2014-10-14 00:25:49,042 [Server.java:pool-1-thread-3:359] - citi::tail::server3:: ProcessRequest method called..icici.client1.3
+2014-10-14 00:25:49,042 [Server.java:pool-1-thread-3:475] - citi::tail::server3::  ReqId: icici.client1.3 Sending reply to client and ack to predecessor
+2014-10-14 00:25:49,042 [Server.java:pool-1-thread-3:292] - citi::tail::server3::  ReqId: icici.client1.3Reply to client : /127.0.0.1 port:9999
+2014-10-14 00:25:49,045 [Server.java:pool-1-thread-3:317] - citi::tail::server3:: ReplyToClient success
+2014-10-14 00:25:49,046 [Server.java:pool-1-thread-3:103] - citi::tail::server3:: Sending ack to predecessor
+2014-10-14 00:25:49,048 [Server.java:pool-1-thread-4:450] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"icici.client1.2","accountNum":123456,"amount":500.0,"replyPort":0}
+2014-10-14 00:25:49,048 [Server.java:pool-4-thread-1:490] - citi::::server2:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,048 [Server.java:pool-4-thread-1:103] - citi::::server2:: Sending ack to predecessor
+2014-10-14 00:25:49,049 [Server.java:pool-5-thread-1:490] - citi::head::server1:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,050 [Server.java:pool-5-thread-1:495] - citi::head::server1:: Ack received at HEAD
+2014-10-14 00:25:49,050 [Server.java:pool-1-thread-4:359] - citi::tail::server3:: ProcessRequest method called..icici.client1.2
+2014-10-14 00:25:49,051 [Server.java:pool-1-thread-4:156] - citi::tail::server3:: ReqId: icici.client1.2-Transaction is inconsistent with history 
+2014-10-14 00:25:49,051 [Server.java:pool-1-thread-4:475] - citi::tail::server3::  ReqId: icici.client1.2 Sending reply to client and ack to predecessor
+2014-10-14 00:25:49,051 [Server.java:pool-1-thread-4:292] - citi::tail::server3::  ReqId: icici.client1.2Reply to client : /127.0.0.1 port:9999
+2014-10-14 00:25:49,054 [Server.java:pool-1-thread-4:317] - citi::tail::server3:: ReplyToClient success
+2014-10-14 00:25:49,055 [Server.java:pool-1-thread-4:103] - citi::tail::server3:: Sending ack to predecessor
+2014-10-14 00:25:49,056 [Server.java:pool-4-thread-2:490] - citi::::server2:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,056 [Server.java:pool-4-thread-2:103] - citi::::server2:: Sending ack to predecessor
+2014-10-14 00:25:49,057 [Server.java:pool-5-thread-3:490] - citi::head::server1:: Received ack from predecessor- ReqId: icici.client1.2
+2014-10-14 00:25:49,057 [Server.java:pool-5-thread-3:495] - citi::head::server1:: Ack received at HEAD

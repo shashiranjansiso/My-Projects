@@ -1,0 +1,178 @@
+2014-10-13 22:48:38,003 [ProcessSpawn.java:main:38] - ProcessSpawnNum of Banks for initiation: 2
+2014-10-13 22:48:38,005 [ProcessSpawn.java:main:44] - ProcessSpawnbankname: citi
+2014-10-13 22:48:38,005 [ProcessSpawn.java:main:48] - ProcessSpawnchainLength: 3
+2014-10-13 22:48:38,026 [Server.java:main:578] - citi::tail::server3::  Server started as TAIL
+2014-10-13 22:48:38,031 [Server.java:main:566] - citi::tail::server3:: Udp server at ip 127.0.0.1 port: 9878 started..
+2014-10-13 22:48:38,044 [Server.java:main:578] - citi::::server2::  Server started as NORMAL
+2014-10-13 22:48:38,048 [Server.java:main:578] - citi::head::server1::  Server started as HEAD
+2014-10-13 22:48:38,048 [Server.java:main:539] - citi::head::server1:: HEAD::udp for client started at ip 127.0.0.1 port: 9876
+2014-10-13 22:48:38,049 [ProcessSpawn.java:main:44] - ProcessSpawnbankname: tfcu
+2014-10-13 22:48:38,049 [ProcessSpawn.java:main:48] - ProcessSpawnchainLength: 2
+2014-10-13 22:48:38,050 [Server.java:main:578] - tfcu::tail::server2::  Server started as TAIL
+2014-10-13 22:48:38,050 [Server.java:main:566] - tfcu::tail::server2:: Udp server at ip 127.0.0.1 port: 9880 started..
+2014-10-13 22:48:38,051 [Server.java:main:578] - tfcu::head::server1::  Server started as HEAD
+2014-10-13 22:48:38,052 [Server.java:main:539] - tfcu::head::server1:: HEAD::udp for client started at ip 127.0.0.1 port: 9879
+2014-10-13 22:48:44,586 [Server.java:pool-6-thread-1:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55256
+2014-10-13 22:48:44,615 [Server.java:pool-2-thread-2:395] - citi::tail::server3:: Received client Query request..127.0.0.1 port 55261
+2014-10-13 22:48:44,846 [Server.java:pool-6-thread-1:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,846 [Server.java:pool-2-thread-2:365] - citi::tail::server3:: New Account created with account no : 29389
+2014-10-13 22:48:44,846 [Server.java:pool-6-thread-1:365] - citi::head::server1:: New Account created with account no : 56890
+2014-10-13 22:48:44,848 [Server.java:pool-6-thread-1:257] - citi::head::server1:: ReqId: citi.client1.0-Deposit operation complete new balance is : 544.0
+2014-10-13 22:48:44,849 [Server.java:pool-6-thread-1:462] - citi::head::server1:: Received Request No -citi.client1.0
+2014-10-13 22:48:44,849 [Server.java:pool-6-thread-1:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,868 [Server.java:pool-2-thread-2:446] - citi::tail::server3:: Client qurey replied..
+2014-10-13 22:48:44,869 [Server.java:pool-2-thread-1:395] - citi::tail::server3:: Received client Query request..127.0.0.1 port 55260
+2014-10-13 22:48:44,873 [Server.java:pool-2-thread-1:365] - citi::tail::server3:: New Account created with account no : 71571
+2014-10-13 22:48:44,876 [Server.java:pool-2-thread-1:446] - citi::tail::server3:: Client qurey replied..
+2014-10-13 22:48:44,876 [Server.java:pool-2-thread-2:395] - citi::tail::server3:: Received client Query request..127.0.0.1 port 55265
+2014-10-13 22:48:44,878 [Server.java:pool-2-thread-2:365] - citi::tail::server3:: New Account created with account no : 97282
+2014-10-13 22:48:44,881 [Server.java:pool-2-thread-2:446] - citi::tail::server3:: Client qurey replied..
+2014-10-13 22:48:44,896 [Server.java:pool-6-thread-2:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55257
+2014-10-13 22:48:44,897 [Server.java:pool-3-thread-1:479] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.0","accountNum":56890,"amount":544.0,"replyPort":0}
+2014-10-13 22:48:44,899 [Server.java:pool-6-thread-2:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,899 [Server.java:pool-6-thread-2:365] - citi::head::server1:: New Account created with account no : 94710
+2014-10-13 22:48:44,899 [Server.java:pool-6-thread-2:257] - citi::head::server1:: ReqId: citi.client1.1-Deposit operation complete new balance is : 994.0
+2014-10-13 22:48:44,899 [Server.java:pool-6-thread-2:462] - citi::head::server1:: Received Request No -citi.client1.1
+2014-10-13 22:48:44,899 [Server.java:pool-6-thread-2:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,900 [Server.java:pool-3-thread-1:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,900 [Server.java:pool-3-thread-1:365] - citi::::server2:: New Account created with account no : 56890
+2014-10-13 22:48:44,900 [Server.java:pool-3-thread-1:257] - citi::::server2:: ReqId: citi.client1.0-Deposit operation complete new balance is : 544.0
+2014-10-13 22:48:44,900 [Server.java:pool-3-thread-1:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,903 [Server.java:pool-6-thread-1:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55259
+2014-10-13 22:48:44,903 [Server.java:pool-1-thread-1:479] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.0","accountNum":56890,"amount":544.0,"replyPort":0}
+2014-10-13 22:48:44,907 [Server.java:pool-6-thread-1:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,907 [Server.java:pool-1-thread-1:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,907 [Server.java:pool-6-thread-1:365] - citi::head::server1:: New Account created with account no : 57768
+2014-10-13 22:48:44,907 [Server.java:pool-6-thread-1:257] - citi::head::server1:: ReqId: citi.client1.3-Deposit operation complete new balance is : 413.0
+2014-10-13 22:48:44,907 [Server.java:pool-6-thread-1:462] - citi::head::server1:: Received Request No -citi.client1.3
+2014-10-13 22:48:44,908 [Server.java:pool-6-thread-1:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,908 [Server.java:pool-3-thread-2:479] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.1","accountNum":94710,"amount":994.0,"replyPort":0}
+2014-10-13 22:48:44,907 [Server.java:pool-1-thread-1:365] - citi::tail::server3:: New Account created with account no : 56890
+2014-10-13 22:48:44,910 [Server.java:pool-1-thread-1:257] - citi::tail::server3:: ReqId: citi.client1.0-Deposit operation complete new balance is : 544.0
+2014-10-13 22:48:44,910 [Server.java:pool-1-thread-1:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,910 [Server.java:pool-1-thread-1:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,910 [Server.java:pool-3-thread-2:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,911 [Server.java:pool-3-thread-2:365] - citi::::server2:: New Account created with account no : 94710
+2014-10-13 22:48:44,911 [Server.java:pool-3-thread-2:257] - citi::::server2:: ReqId: citi.client1.1-Deposit operation complete new balance is : 994.0
+2014-10-13 22:48:44,911 [Server.java:pool-3-thread-2:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,915 [Server.java:pool-6-thread-2:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55258
+2014-10-13 22:48:44,917 [Server.java:pool-6-thread-2:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,926 [Server.java:pool-6-thread-2:365] - citi::head::server1:: New Account created with account no : 98258
+2014-10-13 22:48:44,928 [Server.java:pool-6-thread-2:462] - citi::head::server1:: Received Request No -citi.client1.2
+2014-10-13 22:48:44,928 [Server.java:pool-6-thread-2:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,929 [Server.java:pool-1-thread-1:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,929 [Server.java:pool-1-thread-1:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,931 [Server.java:pool-3-thread-3:479] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.3","accountNum":57768,"amount":413.0,"replyPort":0}
+2014-10-13 22:48:44,932 [Server.java:pool-6-thread-1:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55262
+2014-10-13 22:48:44,932 [Server.java:pool-1-thread-2:479] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.1","accountNum":94710,"amount":994.0,"replyPort":0}
+2014-10-13 22:48:44,936 [Server.java:pool-6-thread-1:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,936 [Server.java:pool-6-thread-1:365] - citi::head::server1:: New Account created with account no : 43033
+2014-10-13 22:48:44,937 [Server.java:pool-6-thread-1:462] - citi::head::server1:: Received Request No -citi.client1.6
+2014-10-13 22:48:44,937 [Server.java:pool-6-thread-1:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,937 [Server.java:pool-3-thread-3:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,937 [Server.java:pool-3-thread-3:365] - citi::::server2:: New Account created with account no : 57768
+2014-10-13 22:48:44,937 [Server.java:pool-3-thread-3:257] - citi::::server2:: ReqId: citi.client1.3-Deposit operation complete new balance is : 413.0
+2014-10-13 22:48:44,937 [Server.java:pool-3-thread-3:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,937 [Server.java:pool-1-thread-2:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,938 [Server.java:pool-1-thread-2:365] - citi::tail::server3:: New Account created with account no : 94710
+2014-10-13 22:48:44,938 [Server.java:pool-1-thread-2:257] - citi::tail::server3:: ReqId: citi.client1.1-Deposit operation complete new balance is : 994.0
+2014-10-13 22:48:44,938 [Server.java:pool-1-thread-2:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,938 [Server.java:pool-1-thread-2:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,940 [Server.java:pool-4-thread-3:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,940 [Server.java:pool-4-thread-3:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,941 [Server.java:pool-3-thread-4:479] - citi::::server2:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"citi.client1.2","accountNum":98258,"amount":759.0,"replyPort":0}
+2014-10-13 22:48:44,941 [Server.java:pool-1-thread-2:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,941 [Server.java:pool-1-thread-2:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,943 [Server.java:pool-1-thread-4:479] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.3","accountNum":57768,"amount":413.0,"replyPort":0}
+2014-10-13 22:48:44,943 [Server.java:pool-3-thread-4:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,944 [Server.java:pool-3-thread-4:365] - citi::::server2:: New Account created with account no : 98258
+2014-10-13 22:48:44,944 [Server.java:pool-3-thread-4:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,943 [Server.java:pool-6-thread-2:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55264
+2014-10-13 22:48:44,947 [Server.java:pool-1-thread-4:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,947 [Server.java:pool-6-thread-2:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,947 [Server.java:pool-3-thread-6:479] - citi::::server2:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"citi.client1.6","accountNum":43033,"amount":699.0,"replyPort":0}
+2014-10-13 22:48:44,948 [Server.java:pool-6-thread-2:365] - citi::head::server1:: New Account created with account no : 13422
+2014-10-13 22:48:44,948 [Server.java:pool-6-thread-2:257] - citi::head::server1:: ReqId: citi.client1.8-Deposit operation complete new balance is : 591.0
+2014-10-13 22:48:44,948 [Server.java:pool-6-thread-2:462] - citi::head::server1:: Received Request No -citi.client1.8
+2014-10-13 22:48:44,948 [Server.java:pool-6-thread-2:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,947 [Server.java:pool-1-thread-4:365] - citi::tail::server3:: New Account created with account no : 57768
+2014-10-13 22:48:44,950 [Server.java:pool-1-thread-4:257] - citi::tail::server3:: ReqId: citi.client1.3-Deposit operation complete new balance is : 413.0
+2014-10-13 22:48:44,950 [Server.java:pool-1-thread-4:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,950 [Server.java:pool-1-thread-4:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,951 [Server.java:pool-6-thread-1:452] - citi::head::server1:: Received client Update request..127.0.0.1 port 55263
+2014-10-13 22:48:44,953 [Server.java:pool-1-thread-4:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,953 [Server.java:pool-1-thread-4:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,953 [Server.java:pool-1-thread-6:479] - citi::tail::server3:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"citi.client1.2","accountNum":98258,"amount":759.0,"replyPort":0}
+2014-10-13 22:48:44,953 [Server.java:pool-3-thread-6:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,954 [Server.java:pool-3-thread-6:365] - citi::::server2:: New Account created with account no : 43033
+2014-10-13 22:48:44,954 [Server.java:pool-3-thread-6:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,956 [Server.java:pool-3-thread-7:479] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.8","accountNum":13422,"amount":591.0,"replyPort":0}
+2014-10-13 22:48:44,957 [Server.java:pool-1-thread-6:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,957 [Server.java:pool-1-thread-6:365] - citi::tail::server3:: New Account created with account no : 98258
+2014-10-13 22:48:44,957 [Server.java:pool-1-thread-6:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,957 [Server.java:pool-1-thread-6:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,958 [Server.java:pool-3-thread-7:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,958 [Server.java:pool-3-thread-7:365] - citi::::server2:: New Account created with account no : 13422
+2014-10-13 22:48:44,958 [Server.java:pool-3-thread-7:257] - citi::::server2:: ReqId: citi.client1.8-Deposit operation complete new balance is : 591.0
+2014-10-13 22:48:44,958 [Server.java:pool-3-thread-7:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,959 [Server.java:pool-1-thread-6:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,959 [Server.java:pool-1-thread-6:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,960 [Server.java:pool-6-thread-1:384] - citi::head::server1:: ProcessRequest method called..
+2014-10-13 22:48:44,960 [Server.java:pool-6-thread-1:365] - citi::head::server1:: New Account created with account no : 9738
+2014-10-13 22:48:44,960 [Server.java:pool-1-thread-8:479] - citi::tail::server3:: Sync from predecessor {"operationType":"WITHDRAW","reqID":"citi.client1.6","accountNum":43033,"amount":699.0,"replyPort":0}
+2014-10-13 22:48:44,960 [Server.java:pool-6-thread-1:257] - citi::head::server1:: ReqId: citi.client1.7-Deposit operation complete new balance is : 308.0
+2014-10-13 22:48:44,961 [Server.java:pool-6-thread-1:462] - citi::head::server1:: Received Request No -citi.client1.7
+2014-10-13 22:48:44,961 [Server.java:pool-6-thread-1:292] - citi::head::server1:: server_error : Request format is not correct
+2014-10-13 22:48:44,963 [Server.java:pool-1-thread-8:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,963 [Server.java:pool-1-thread-8:365] - citi::tail::server3:: New Account created with account no : 43033
+2014-10-13 22:48:44,963 [Server.java:pool-1-thread-8:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,963 [Server.java:pool-1-thread-8:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,963 [Server.java:pool-5-thread-1:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,964 [Server.java:pool-5-thread-1:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,961 [Server.java:pool-4-thread-2:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,964 [Server.java:pool-4-thread-2:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,966 [Server.java:pool-1-thread-8:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,966 [Server.java:pool-1-thread-8:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,967 [Server.java:pool-1-thread-10:479] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.8","accountNum":13422,"amount":591.0,"replyPort":0}
+2014-10-13 22:48:44,967 [Server.java:pool-5-thread-2:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,967 [Server.java:pool-5-thread-2:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,967 [Server.java:pool-3-thread-8:479] - citi::::server2:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.7","accountNum":9738,"amount":308.0,"replyPort":0}
+2014-10-13 22:48:44,969 [Server.java:pool-1-thread-10:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,969 [Server.java:pool-1-thread-10:365] - citi::tail::server3:: New Account created with account no : 13422
+2014-10-13 22:48:44,969 [Server.java:pool-1-thread-10:257] - citi::tail::server3:: ReqId: citi.client1.8-Deposit operation complete new balance is : 591.0
+2014-10-13 22:48:44,969 [Server.java:pool-1-thread-10:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,970 [Server.java:pool-1-thread-10:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,969 [Server.java:pool-3-thread-8:384] - citi::::server2:: ProcessRequest method called..
+2014-10-13 22:48:44,970 [Server.java:pool-3-thread-8:365] - citi::::server2:: New Account created with account no : 9738
+2014-10-13 22:48:44,971 [Server.java:pool-3-thread-8:257] - citi::::server2:: ReqId: citi.client1.7-Deposit operation complete new balance is : 308.0
+2014-10-13 22:48:44,971 [Server.java:pool-3-thread-8:292] - citi::::server2:: server_error : Request format is not correct
+2014-10-13 22:48:44,976 [Server.java:pool-4-thread-4:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,976 [Server.java:pool-4-thread-4:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,977 [Server.java:pool-1-thread-10:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,977 [Server.java:pool-1-thread-10:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,977 [Server.java:pool-5-thread-3:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,978 [Server.java:pool-5-thread-3:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,977 [Server.java:pool-4-thread-3:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,978 [Server.java:pool-4-thread-3:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,978 [Server.java:pool-5-thread-4:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,978 [Server.java:pool-5-thread-4:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,979 [Server.java:pool-4-thread-1:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,979 [Server.java:pool-4-thread-1:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,979 [Server.java:pool-4-thread-3:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,979 [Server.java:pool-4-thread-3:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,979 [Server.java:pool-1-thread-3:479] - citi::tail::server3:: Sync from predecessor {"operationType":"DEPOSIT","reqID":"citi.client1.7","accountNum":9738,"amount":308.0,"replyPort":0}
+2014-10-13 22:48:44,979 [Server.java:pool-5-thread-1:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,980 [Server.java:pool-5-thread-1:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,980 [Server.java:pool-5-thread-2:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,980 [Server.java:pool-5-thread-2:529] - citi::head::server1:: Ack received at HEAD
+2014-10-13 22:48:44,981 [Server.java:pool-1-thread-3:384] - citi::tail::server3:: ProcessRequest method called..
+2014-10-13 22:48:44,981 [Server.java:pool-1-thread-3:365] - citi::tail::server3:: New Account created with account no : 9738
+2014-10-13 22:48:44,981 [Server.java:pool-1-thread-3:257] - citi::tail::server3:: ReqId: citi.client1.7-Deposit operation complete new balance is : 308.0
+2014-10-13 22:48:44,981 [Server.java:pool-1-thread-3:506] - citi::tail::server3:: Sending reply to client and ack to predecessor
+2014-10-13 22:48:44,981 [Server.java:pool-1-thread-3:314] - citi::tail::server3:: Reply to client : /127.0.0.1 port:9999
+2014-10-13 22:48:44,984 [Server.java:pool-1-thread-3:341] - citi::tail::server3:: ReplyToClient success
+2014-10-13 22:48:44,984 [Server.java:pool-1-thread-3:105] - citi::tail::server3:: Sending ack to predecessor
+2014-10-13 22:48:44,984 [Server.java:pool-4-thread-4:523] - citi::::server2:: Received ack from predecessor
+2014-10-13 22:48:44,985 [Server.java:pool-4-thread-4:105] - citi::::server2:: Sending ack to predecessor
+2014-10-13 22:48:44,985 [Server.java:pool-5-thread-3:523] - citi::head::server1:: Received ack from predecessor
+2014-10-13 22:48:44,985 [Server.java:pool-5-thread-3:529] - citi::head::server1:: Ack received at HEAD

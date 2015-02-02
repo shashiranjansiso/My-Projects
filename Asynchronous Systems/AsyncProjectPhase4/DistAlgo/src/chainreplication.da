@@ -1,0 +1,992 @@
+import sys, configparser, random, time
+from enum import Enum, unique
+from threading import Thread
+class account(object):
+       def __init__(self, accNum = 0, balance = 0):
+               self.accountNum = accNum
+               self.balance = balance
+
+       def getBalance(self):
+               return self.balance
+       
+       def deposit(self, amount):
+               self.balance = self.balance + amount
+       
+       def withdraw(self, amount):
+               if self.balance >= amount:
+                      self.balance = self.balance - amount
+                      return True
+               else:
+                      return False 			
+
+class Outcome(Enum):
+	Processed = 1
+	InconsistentWithHistory = 2
+	InsufficientFunds = 3
+
+class RequestType(Enum):
+	Deposit = 1
+	Withdraw = 2
+	Transfer = 3
+	GetBalance = 4	
+	
+class client(process):
+	def setup(head, tail, requests, name, timeout, sleepafternumrequests, retransmitTimeout, clientignorerequests):
+		self.name = name
+		self.head = head
+		self.tail = tail
+		self.requests = requests	
+		self.q = set()	
+		self.recvd = set()
+		self.clientignorerequests = clientignorerequests
+		self.sleepafternumrequests = sleepafternumrequests
+		self.retransmitTimeout = retransmitTimeout
+		#output(self.name+ "chain size " + str(len(servers)))
+		output(self.name + "no of requests to be sent is... " + str(len(requests)))
+		self.timeout = timeout
+		output(self.name + " set up called...")
+		
+	def mutex(rid,up,acc,am,dstbank, dstacc, task):
+		--start
+		time.sleep(2)
+		reqc = logical_clock()
+		q.add((reqc, self.id, rid))
+		if up == RequestType.GetBalance:
+			update = 'Query'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=tail)
+				
+		elif up == RequestType.Deposit:
+			update = 'Deposit'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=head)
+		elif up == RequestType.Withdraw:
+			update = 'Withdraw'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ")")
+			send((rid, update, acc, am), to=head)
+		else:
+			update = 'Transfer'
+			output(self.name + " sending request to bank (reqid= " + rid + ", operation=" + update +", accNum=" + str(acc) + ", amount=" + str(am) + ", dst bank=" + dstbank + ", dst acc num=" + str(dstacc) +  ")")
+			send((rid, update, acc, dstbank, dstacc, am), to=head)
+	
+	def main():
+		def announce():
+			output("in cs ")
+		--start
+		index = 0
+		for (rid,up,acc,am,dstbank, dstacc) in requests:
+			output(self.name + "client ....... reqid " + rid)
+			index = index + 1
+			if index == self.sleepafternumrequests:
+				time.sleep(timeout)
+			if index > self.clientignorerequests:
+				mutex(rid,up,acc,am,dstbank, dstacc, announce)
+		#for (rid, up, acc, am) in requests:
+		if await(received(('Reply',id, id, id), from_=tail)):
+			pass
+		elif timeout(self.retransmitTimeout):
+			for (rid, up, acc, am, dstbank, dstacc) in requests:
+				if rid not in recvd:
+					output(self.name + " reply not received." + rid)
+					mutex(rid,up,acc,am,dstbank, dstacc, announce)
+				#if rid == None:
+				#	output(self.name + "rid is none")
+				#else:
+				#	output(self.name + "resending request to server: " + rid)
+				#	mutex(rid,up,acc,am,announce)
+		--end
+		#if await(received(('Reply',id, id, id)) or received(('newhead', id)) or received(('newtail', id))):
+		if await(received(('newhead', id)) or received(('newtail', id))):
+			output("received reply")
+
+	def recv(msg=('newhead',head), from_=master):
+		output(self.name + "new head")
+		self.head = head
+		
+	def recv(msg=('newtail',tail), from_=master):
+		output(self.name + "new tail")
+		self.tail = tail		
+	
+	def recv(msg=('Reply',reqid, outcome,balance), from_=source):
+		output(self.name + "reply from server: (reqid=" + reqid + ", outcome=" + str(outcome) + ",balance= " + str(balance))
+		recvd.add((reqid))		
+
+class server(process):
+	def setup(name, role, successor, predecessor, bank, master, maxrequests, chainExtensionFailureMaxMsg, heartbeattimeoutserver):
+		if role == None:
+			time.sleep(5)
+			output(self.name + "extended chain's new tail")
+		self.name = name
+		self.role = role	
+		self.successor = successor
+		self.predecessor = predecessor
+		self.client = None
+		self.pending = []
+		self.pendingTransfer =[]
+		self.completed = []
+		self.completedTransfer = []
+		self.srcbank = None
+		self.bank = bank	
+		self.outcomeHistory = {}
+		self.otherbankinfo = {}
+		self.heartbeattimeoutserver = heartbeattimeoutserver
+		self.chainExtensionFailureMaxMsg = chainExtensionFailureMaxMsg
+		output(self.name + "self.chainExtensionFailureMaxMsg  "  + str(self.chainExtensionFailureMaxMsg))
+		self.maxrequests = maxrequests
+		self.currentreqcount = 0
+		#self.newMemberFlag = False
+		output(self.name + "server set up called.. timeout " + str(maxrequests))
+		#sendheartbeat()
+		if self.predecessor == None and self.successor == None:
+			output(self.name + "new server in chain ")
+			setupExtendedServer()
+			sendheartbeat()
+		else:
+			sendheartbeat()	
+	def main():
+		#if self.predecessor == None and self.successor == None:
+		#	output(self.name + "new server in chain ")
+		#	setupExtendedServer()
+			#return
+		--sync
+		#while True:
+		#	if await(False): 
+		#		pass
+		#	elif timeout(timeout):	
+		#		#send heartbeat message
+		#		#output(self.name + "sending heartbeat")
+		#		#if self.role != 'tail':
+		#		if self.currentreqcount < self.maxrequests:
+		#			output(self.name + "heartbeat sending..")
+		#			send(('heartbeat',), to=self.master)
+		if await(received(('terminate',)) or received(('bankdetail', id))  or received(('updatebankdetail',id,id,id)) or received(('newsuccessor',id)) or received(('newpredecessor',id)) or received(('SyncTransfer',id,id,id,id,id,id,id,id)) or received(('pendingtransactions',id))): 
+			pass
+		if await(received(('Ack',id,id,id,id,id,id, id))):pass
+		if self.role == 'tail':
+			if await(received((id, 'Query', id))): pass
+		elif self.role == 'head':
+			if await(received((id, 'Deposit',id,id)) or received((id, 'Withdraw',id,id)) or received((id, 'Transfer',id,id,id))): 
+				output(self.name + ":main received request from client")
+		else:
+			if await(received(('Sync',id,id,id,id,id,id))):pass
+		#if await(received(('bankinfo', id))):pass
+		#--release
+	
+	def sendheartbeat():
+		while True:
+			if await(False):
+				pass
+			elif timeout(self.heartbeattimeoutserver):
+                                #send heartbeat message
+				if self.currentreqcount < self.maxrequests:
+					output(self.name + "heartbeat sending..")
+					send(('heartbeat',), to=self.master)
+
+	def setupExtendedServer():
+		#inform master to join the chain
+		output(self.name + "sent wanttojoin to master")
+		send(('wanttojoin',self.bank), to=self.master)
+	
+	def recv(msg=('bankdetail',bankinfo), from_=m):
+		output(self.name + "updated bank details ")
+		self.otherbankinfo = bankinfo
+	
+	def recv(msg=('updatebankdetail', bankname, head, tail), from_=m):
+		output(self.name + " received updatebank detail event")
+		self.otherbankinfo[bankname] = (head, tail)
+		#output(self.name + pendingTransfer)
+		#for (reqid, update, srcacnum, dstbank, dstacnum, amount,client) in pendingTransfer:
+		#	output(self.name + " resending reqid " + reqid)
+		#output(self.name +"   " +  self.role)
+		if self.role == 'tail':
+			#output(self.name + "inside tail ")
+			for (reqid, update, srcacnum, dstbank, dstacnum, amount,client) in pendingTransfer:
+				output(self.name + " resending reqid " + reqid + "dstbank= " + dstbank + "bank= " + bankname )
+				if dstbank == bankname:
+					#resend transfer request
+					balance = self.bank.getBalance(srcacnum)
+					output(self.name + "re sending transfer request to dstbank: (reqid = " + reqid + ", balance = " + str(balance) + ")")
+					#(head, tail) = self.otherbankinfo[dstbank]
+					send((reqid, 'Deposit', dstacnum, amount, client), to=head)		
+	
+	def recv(msg=('newjoinee',newtail), from_=m):
+		output(self.name + "new member joining request")
+		#self.newMemberFlag = True
+		index = 0
+		for (rid,up,ac,am,cl) in completed:
+			size = len(completed)
+			index = index + 1
+			if index == self.chainExtensionFailureMaxMsg and self.chainExtensionFailureMaxMsg > 0:
+				self.currentreqcount = 100000
+				output(self.name + " crashed....")
+				if self.currentreqcount > self.maxrequests:
+					return
+			send(('completedtransactions',rid,up,ac,am,cl,index, size), to=newtail)
+			output(self.name + "index of current transacrion in completed list is " + str(index))	
+		send(('bankdetail', bank, len(self.completed)), to =newtail)
+		output(self.name + "pending list size " + str(len(pending)) + " completed list size " + str(len(completed)))
+			
+	def recv(msg=('bankdetail', b, maxsize), from_=oldtail):
+		output(self.name + " maxsize " + str(maxsize) + " completed list size is " + str(len(self.completed)))
+		if maxsize != len(self.completed):
+			output(self.name +  "bank detail not completed")
+			return
+		self.bank = b
+		#balance = bank.getBalance(123456)
+		#output(self.name + " balance is " + str(balance))
+		send(('synccomplete',self.bank), to=self.master)
+
+	def recv(msg=('newsuccessor',newsuccessor), from_=m):
+		self.successor = newsuccessor
+		#send pending transactionlist to new successor	
+		send(('pendingtransactions',self.pending), to=newsuccessor)	
+
+	#def recv(msg=('completedtransactions',completedtrans), from_=prev):
+	#	self.completed = completedtrans
+	
+	def recv(msg=('completedtransactions',rid,up,ac,am,cl,index, size), from_=source):
+		if index == 0:
+			self.completed = []
+		if self.currentreqcount < self.maxrequests:
+			self.completed.append((rid,up,ac,am,cl))
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + "crashing server")
+			return
+
+	#pending transactions from new predecessor
+	def recv(msg=('pendingtransactions',pendingtrans), from_=m):	
+		output(self.name + "received pending transation from predecesor")
+		for (rid,up,ac,am,cl) in pendingtrans:
+			output(self.name + "received pending trans reqids: " + rid)
+		for (rid,up,ac,am,cl) in pending:
+			output(self.name + "self pending trans reqids: " + rid)
+		for (rid,up,ac,am,cl) in completed:
+			output(self.name + "self completed trans reqids: " + rid)
+		for (rid,up,ac,am,cl) in pendingtrans:
+			#output(self.name + "pendingtransactions1")
+			if (some((reqid, update, account, amount, client) in pending, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+				output(self.name + "inconsistent with history for reqid= " + reqid)
+				outcome = Outcome.InconsistentWithHistory
+				handlerequest(rid,up, ac, am, outcome, cl, None)
+			elif (some((reqid, update, account, amount, client) in completed, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+				output(self.name + "inconsistent with history for reqid = " + reqid)
+				outcome = Outcome.InconsistentWithHistory
+				handlerequest(rid,up, ac, am, outcome, cl, None)
+			elif (rid,up,ac,am,cl) not in pending and (rid,up,ac,am,cl) not in completed:
+				output(self.name + "pendingtransactions3")
+				outcome = Outcome.Processed
+				handlerequest(rid,up, ac, am, outcome, cl, None)
+			elif (rid,up,ac,am,cl) in pending and (rid,up,ac,am,cl) not in completed:
+				#handle
+				outcome = Outcome.Processed
+				handlerequest(rid, up, ac, am, outcome, cl, None)
+			elif (rid,up,ac,am,cl) not in pending and (rid,up,ac,am,cl) in completed:
+				#send back ack
+				(outcome, balance) = self.outcomeHistory[rid]
+				output(self.name + "sending ack to predecessor for reqid = " + rid)
+				send(('Ack',rid, up, ac, am, outcome, cl, None), to=self.predecessor)	
+					
+	def recv(msg=('newpredecessor',newpredecessor), from_=m):
+                self.predecessor = newpredecessor
+
+	def recv(msg=('rolechange',role), from_=m):
+		self.role = role
+		if role == 'head':
+			output(self.name  + "new role:head")
+			self.predecessor = None
+		elif role == 'tail':
+			output(self.name  + "new role:tail")
+			self.successor = None
+			#TODO resend transfer request
+			for (reqid, update, srcacnum, dstbank, dstacnum, amount,client) in pendingTransfer:
+				output(self.name + " resending reqid " + reqid + "dstbank= " + dstbank)
+                                #if dstbank == bankname:
+				#resend transfer request
+				balance = self.bank.getBalance(srcacnum)
+				#output(self.name + "ancascare sending transfer request to dstbank: (reqid = " + reqid + ", balance = " + str(balance) + ")")
+				(head, tail) = self.otherbankinfo[dstbank]
+				send((reqid, 'Deposit', dstacnum, amount, client), to=head)	
+		elif role == 'normal':
+			self.name = self.name + "::oldtail"
+			output(self.name  + "new role:normal server")
+	
+	def recv(msg=('terminate',), from_=m):
+                output(self.name + "terminate called..")
+
+	def recv(msg=(reqid,update,accNum, amount,client), from_=srcbank):
+		if reqid == 'updatebankdetail':
+			return
+		if (some((rid, up, ac, am, cl) in pending, has=((rid == reqid)))):
+			output(self.name + "duplicate transfer request ")
+			return
+		output(self.name + " recieved transfer request from source bank ");
+		if self.currentreqcount < self.maxrequests:
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + "crashing server")
+			return
+		bank.deposit(accNum, amount)
+		if (reqid,update,accNum,amount,client) in completed or (reqid,update,accNum,amount,client) in pending:
+			output(self.name + "shashi::::duplicate transfer request ")
+			#return
+		pending.append((reqid,update,accNum,amount,client))
+		outcome = Outcome.Processed
+		outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+		output(self.name + "sending sync to successor for reqid = " + reqid)
+		if srcbank is None:
+			output(self.name + " dst head srcbank is none");
+		send(('Sync',reqid, update, accNum, amount, outcome, client, srcbank), to=successor)	
+	
+	#head deposit and withdraw requests from client
+	def recv(msg=(reqid,update,accNum, amount), from_=client):
+		if reqid == 'updatebankdetail':
+			return	
+		if self.currentreqcount < self.maxrequests:
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + "crashing server")
+			return
+		if update == 'Query':
+			self.handleQuery(reqid, 'Query',accNum,amount,client)
+			return
+		output(self.name + "received request from client: (reqid= " + reqid + ", operation=" + update +", accNum=" + str(accNum) + ", amount=" + str(amount) + ")")
+		outcome = None
+		#check for duplicate requests
+		if (reqid,update,accNum,amount,client) in completed or (reqid,update,accNum,amount,client) in pending:
+			#output(self.name + "dulicate request")	
+			(outcome,balance) = outcomeHistory[reqid]	
+			#outcome = Outcome.Processed
+			#even if duplicate add to pending queue
+			pending.append((reqid,update,accNum,amount,client))
+		elif (some((rid, up, ac, am, cl) in pending, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+			output(self.name + "inconsistent with history for reqid= " + reqid)
+			outcome = Outcome.InconsistentWithHistory
+		elif (some((rid, up, ac, am, cl) in completed, has=((rid == reqid) and (up != update or ac != account or am != amount or cl != client)))):
+			output(self.name + "inconsistent with history for reqid = " + reqid)
+			outcome = Outcome.InconsistentWithHistory
+		else:
+			pending.append((reqid,update,accNum,amount,client))	
+			outcome = Outcome.Processed
+			if update == 'Deposit':
+				bank.deposit(accNum, amount)
+			elif update == 'Withdraw':
+				result = bank.withdraw(accNum, amount)
+				if result == False:
+					outcome = Outcome.InsufficientFunds
+			outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			#output(self.name + "processed request for reqid=" + reqid) 
+		if self.role == 'head' and self.successor is None:
+			balance = bank.getBalance(accNum)
+			if outcome != Outcome.InconsistentWithHistory:
+				pending.remove((reqid,update,accNum,amount,client))
+				completed.append((reqid, update,accNum,amount,client))
+				outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+			send(('Reply',reqid, outcome, balance), to=client)
+		else: 
+			output(self.name + "sending sync to successor for reqid = " + reqid)
+			send(('Sync',reqid, update, accNum, amount, outcome, client, None), to=successor)
+
+	def recv(msg=(reqid, update, srcacnum, dstbank, dstacnum, amount) , from_=client):
+		if reqid == 'updatebankdetail':
+			return
+		if self.currentreqcount < self.maxrequests:
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + "crashing server")
+			return
+		#if update == 'Query':
+		#	self.handleQuery(reqid, 'Query',accNum,amount,client)
+		#	return
+		output(self.name + "received request from client for transfer: (reqid= " + reqid + ", operation=" + update + ", src accNum=" + str(srcacnum) + ", dst bank=" + dstbank + ", dst accnum" + str(dstacnum) + ", amount=" + str(amount) + ")")
+		outcome = None
+		#check for duplicate requests
+		if ((some((rid, up, srcac, dbank,dstac,am,cl) in pendingTransfer, has=((rid == reqid) and (up == update and srcac == srcacnum and dbank == dstbank and dstac == dstacnum and am == amount)))) or (some((rid, up, srcac, dbank,dstac,am,cl) in completedTransfer, has=((rid == reqid) and (up == update and srcac == srcacnum and dbank == dstbank and dstac == dstacnum and am == amount))))):
+			output(self.name + "dulicate transfer request")
+			(outcome,balance) = outcomeHistory[reqid]
+			#outcome = Outcome.Processed
+			#even if duplicate add to pending queue
+			pendingTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount,client))
+		elif (some((rid, up, srcac, dbank,dstac,am,cl) in pendingTransfer, has=((rid == reqid) and (up != update or srcac != srcacnum or dbank != dstbank or dstac != dstacnum or am != amount)))):
+			output(self.name + "inconsistent with history for reqid= " + reqid)
+			output(self.name + "inconsisntent history : (reqid= " + reqid + ", operation=" + update + ", src accNum=" + str(srcacnum) + ", dst bank=" + dstbank + ", dst accnum" + str(dstacnum) + ", amount=" + str(amount) + ")")
+			outcome = Outcome.InconsistentWithHistory
+		elif (some((rid, up, srcac, dbank,dstac,am,cl) in completedTransfer, has=((rid == reqid) and (up != update or srcac != srcacnum or dbank != dstbank or dstac != dstacnum or am != amount)))):
+			output(self.name + "inconsisntent history : (reqid= " + reqid + ", operation=" + update + ", src accNum=" + str(srcacnum) + ", dst bank=" + dstbank + ", dst accnum" + str(dstacnum) + ", amount=" + str(amount) + ")")
+			output(self.name + "inconsistent with history for reqid = " + reqid)
+			outcome = Outcome.InconsistentWithHistory
+		else:
+			pendingTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount,cl))
+			outcome = Outcome.Processed
+			#if update == 'Transfer':	#TODO
+                        #        bank.deposit(srcacnum, amount)
+			if update == 'Transfer':
+				result = bank.withdraw(srcacnum, amount)
+				if result == False:
+					outcome = Outcome.InsufficientFunds
+				outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+                        #output(self.name + "processed request for reqid=" + reqid)
+		#if self.role == 'head' and self.successor is None:
+                #        balance = bank.getBalance(accNum)
+                #        if outcome != Outcome.InconsistentWithHistory:
+                #                pending.remove((reqid,update,accNum,amount,client))
+                #                completed.append((reqid, update,accNum,amount,client))
+                #                outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+                #        output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+                #        send(('Reply',reqid, outcome, balance), to=client)
+                #else:
+		output(self.name + "sending syncTransfer to successor for reqid = " + reqid)
+		send(('SyncTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=successor)
+	
+	#tail:: query or getbalance() request from client
+	def handleQuery(reqid, query, accNum, junk,client):
+		output(self.name + "shashi::received query request from client: (reqid =" + reqid + ", operation = Query, accNum =" + str(accNum) + ")")
+		balance = bank.getBalance(accNum)
+		output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(Outcome.Processed) + ", balance = " + str(balance) + ")")
+		send(('Reply', reqid, Outcome.Processed, balance), to=client)	
+	
+	def handlerequest(reqid,update, accNum, amount, outcome, client, srcbank):
+		if reqid == 'updatebankdetail':
+			return
+		if srcbank is None:
+			output(self.name + "handlerequest src bank is none ")
+		if self.currentreqcount < self.maxrequests:
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + " crashing server...")
+			return
+		output(self.name + "received sync : (reqid= " + reqid + ", operation=" + update +", accNum=" + str(accNum) + ", amount=" + str(amount) + ")")
+		if outcome == Outcome.InconsistentWithHistory:
+			output(self.name + "InconsistentWithHistory for reqid = " + reqid)
+		elif(reqid,update,accNum,amount,client) not in completed and (reqid,update,accNum,amount,client) not in pending:
+			self.pending.append((reqid,update,accNum,amount,client))
+			if update == 'Deposit':
+				self.bank.deposit(accNum, amount)
+			elif update == "Withdraw" or update == "Transfer":
+				result = bank.withdraw(accNum, amount)
+				if result == False:
+					outcome = Outcome.InsufficientFunds
+					#output(self.name + "InsufficientFunds for reqid=" + reqid)
+				#else:
+					#output(self.name + "processed request for reqid=" + reqid)
+			self.outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			#output(self.name + "processed request for reqid=" + reqid)
+		else:
+			(outcome, balance) = self.outcomeHistory[reqid]
+			#outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			self.pending.append((reqid,update,accNum,amount,client))
+			send(('Reply',reqid,outcome,balance), to=client)
+			send(('Ack',reqid, update, accNum, amount, outcome, client, srcbank), to=self.predecessor)
+			return
+			#output(self.name + "duplicate request for reqid = " + reqid)
+		if self.role == 'tail':
+			if outcome != Outcome.InconsistentWithHistory:
+				self.outcomeHistory[reqid] = (outcome,self.bank.getBalance(accNum))
+				self.completed.append((reqid,update,accNum,amount,client))
+				self.pending.remove((reqid,update,accNum,amount,client))
+				output(self.name + "sending ack to predecessor for reqid = " + reqid)
+				send(('Ack',reqid, update, accNum, amount, outcome, client, srcbank), to=self.predecessor)
+			balance = self.bank.getBalance(accNum)
+			output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+			send(('Reply',reqid,outcome,balance), to=client)
+		else:
+			output(self.name + "sending sync to successor for reqid = " + reqid)
+			send(('Sync',reqid,update, accNum, amount, outcome, client,srcbank), to=self.successor)
+		
+	def recv(msg=('SyncTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), from_=source):
+		if self.currentreqcount < self.maxrequests:
+			self.currentreqcount = self.currentreqcount + 1
+			output(self.name + "current request count is : " + str(self.currentreqcount))
+		else:
+			output(self.name + " crashing server...")
+			return
+		output(self.name + "received syncTransfer : (reqid= " + reqid + ", operation=" + update + ", src accNum=" + str(srcacnum) + ", dst bank=" + dstbank + ", dst accnum" + str(dstacnum) + ", amount=" + str(amount) + ")")
+		if outcome == Outcome.InconsistentWithHistory:
+			output(self.name + "InconsistentWithHistory for reqid = " + reqid)
+		#elif(reqid, update, srcacnum, dstbank, dstacnum, amount, client) not in completedTransfer and (reqid, update, srcacnum, dstbank, dstacnum, amount,client) not in pendingTransfer:
+		#	output(self.name + "synctransfer new request ")
+		#	self.pendingTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount, client))
+                #        #if update == 'Deposit':
+                #        #        self.bank.deposit(accNum, amount)
+                #        #elif update == "Withdraw":
+		#	result = bank.withdraw(srcacnum, amount)
+		#	if result == False:
+		#		output(self.name + " insufficient funds for transfer ")
+		#		outcome = Outcome.InsufficientFunds
+		#		balance = self.bank.getBalance(srcacnum)
+		#		if self.role == 'tail':
+		#			output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+		#			send(('Reply',reqid,outcome,balance), to=client)
+		#			send(('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=self.predecessor)
+                #                        #output(self.name + "InsufficientFunds for reqid=" + reqid)
+		#			self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+		#			return
+		#	self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+                #       #output(self.name + "processed request for reqid=" + reqid)
+		elif ((some((rid, up, srcac, dbank,dstac,am,cl) in pendingTransfer, has=((rid == reqid) and (up == update and srcac == srcacnum and dbank == dstbank and dstac == dstacnum and am == amount)))) or (some((rid, up, srcac, dbank,dstac,am,cl) in completedTransfer, has=((rid == reqid) and (up == update and srcac == srcacnum and dbank == dstbank and dstac == dstacnum and am == amount))))):
+			#dupllicate request
+			output(self.name + "synctransfer duplicate request")
+			(outcome, balance) = self.outcomeHistory[reqid]
+			#outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+			self.pendingTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount,client))
+			#if self.role == 'tail':
+			#	send(('Reply',reqid,outcome,balance), to=client)
+			#	send(('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=self.predecessor)
+			#	pendingTransfer.remove((reqid, update, srcacnum, dstbank, dstacnum, amount,client))
+			#	completedTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount,client))
+			#	return
+                        #output(self.name + "duplicate request for reqid = " + reqid)
+		#new requests
+		elif(reqid, update, srcacnum, dstbank, dstacnum, amount, client) not in completedTransfer and (reqid, update, srcacnum, dstbank, dstacnum, amount,client) not in pendingTransfer:
+			output(self.name + "synctransfer new request ")
+			self.pendingTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount, client))
+                        #if update == 'Deposit':
+                        #        self.bank.deposit(accNum, amount)
+                        #elif update == "Withdraw":
+			result = bank.withdraw(srcacnum, amount)
+			if result == False:
+				output(self.name + " insufficient funds for transfer ")
+				outcome = Outcome.InsufficientFunds
+				balance = self.bank.getBalance(srcacnum)
+				if self.role == 'tail':
+					output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+					send(('Reply',reqid,outcome,balance), to=client)
+					send(('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=self.predecessor)
+                                       	#output(self.name + "InsufficientFunds for reqid=" + reqid)
+					self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+					return
+				self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+                        #output(self.name + "processed request for reqid=" + reqid)
+		if self.role == 'tail':
+			if outcome == Outcome.InconsistentWithHistory:
+				#self.outcomeHistory[reqid] = (outcome,self.bank.getBalance(srcacnum))
+				#self.completed.append((reqid,update,accNum,amount,client))
+				#self.pendingTransfer.remove((reqid, update, srcacnum, dstbank, dstacnum, amount,client))
+				#output(self.name + "sending ack Transfer to predecessor for reqid = " + reqid)
+				balance = self.bank.getBalance(srcacnum)
+				output(self.name + "sending reply to client: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+				send(('Reply',reqid,outcome,balance), to=client)
+				#send(('AckTrasnfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=self.predecessor)
+				#balance = self.bank.getBalance(srcacnum)
+				self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+			else:
+				#TODO forwared request to dst ban
+				balance = self.bank.getBalance(srcacnum)
+				output(self.name + "sending transfer request to dstbank: (reqid = " + reqid + ", outcome= " + str(outcome) + ", balance = " + str(balance) + ")")
+				(head, tail) = self.otherbankinfo[dstbank] 
+				send((reqid, 'Deposit', dstacnum, amount, client), to=head)
+				self.outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+				#send(('Reply',reqid,outcome,balance), to=head)
+		else:
+			output(self.name + "sending syncTrasnfer to successor for reqid = " + reqid)
+			send(('SyncTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=self.successor)
+		
+	def recv(msg=('Sync',reqid,update, accNum, amount, outcome, client, srcbank), from_=source):
+		if srcbank is None:
+			output(self.name + " sync src bank is none ");
+		handlerequest(reqid,update, accNum, amount, outcome, client, srcbank)
+
+	def recv(msg=('Ack',reqid, update, accNum, amount, outcome, client, srcbank), from_=source):
+		if srcbank is None:
+			output(self.name + "src bank is none")
+		output(self.name + "received Ack from successor for reqid = " + reqid)
+		if (some((rid, up, ac, am, cl) in pending, has=(rid == reqid))):
+			pending.remove((rid, up, ac, am, cl))
+			completed.append((rid, up, ac, am, cl))
+			
+		#if (some((rid, up, srcac, dbank, dac, am,cl) in pendingTransfer, has=((rid = reqid)))):
+		#	pendingTransfer.remove((rid, up, srcac, dbank, dac, am,cl))
+		#	completedTransfer.remove((rid, up, srcac, dbank, dac, am,cl))
+		#	send(('AckTransfer',rid, up, srcac, dbank, dac, am, outcome, cl), to=predecessor)
+		#if (reqid, update, accNum, amount, client) in pending:
+		#	pending.remove((reqid, update, accNum, amount, client))
+		#	completed.append((reqid, update,accNum,amount,client))
+		#if (reqid, update, accNum, amount, client) in pendingTransfer:
+                #        pendingTransfer.remove((reqid, update, accNum, amount, client))
+		#	completedTransfer.append((reqid, update,accNum,amount,client))
+		#	send(('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=predecessor)	
+		outcomeHistory[reqid] = (outcome,bank.getBalance(accNum))
+		if self.role != 'head':
+			output(self.name + "sending ack predecessor for reqid = " + reqid)
+			#output(self.name + "shashiiiiiii")
+			if predecessor == None:
+				output(self.name + "no predecessor")	
+			send(('Ack',reqid, update, accNum, outcome, amount, client, srcbank), to=predecessor)
+		else: 
+			if srcbank != None:
+				output(self.name + "sending ack to source bank :")
+				send(('AckTransfer',reqid, update, None, None, accNum, amount, outcome, client), to=srcbank)
+			else:
+				output(self.name + "sec bank is None")
+
+	def recv(msg=('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), from_=source):
+		output(self.name + "received Ack for transfer from successor for reqid = " + reqid)	
+		if (some((rid, up, srcac, dbank, dac, am,cl) in pendingTransfer, has=((rid == reqid)))):
+			pendingTransfer.remove((rid, up, srcac, dbank, dac, am,cl))
+			completedTransfer.append((rid, up, srcac, dbank, dac, am,cl))
+		#if (reqid, update, srcacnum, dstbank, dstacnum, amount, client) in pendingTransfer:
+		#	pendingTransfer.remove((reqid, update, srcacnum, dstbank, dstacnum, amount, client))	
+		outcomeHistory[reqid] = (outcome,bank.getBalance(srcacnum))
+		#completedTransfer.append((reqid, update, srcacnum, dstbank, dstacnum, amount, client))
+		if self.role != 'head':
+			output(self.name + "sending ackTransfer predecessor for reqid = " + reqid)
+			if predecessor == None:
+				output(self.name + "no predecessor")
+			send(('AckTransfer',reqid, update, srcacnum, dstbank, dstacnum, amount, outcome, client), to=predecessor)	
+
+class Bank(object):
+        def __init__(self, bankname, master, chainextensionEnable, chainExtensionFailureMaxMsg, heartbeattimeoutserver):
+                self.bankName = bankname
+                self.accountList = []
+                #self.servers = servers
+                self.servers= []
+                self.head = None
+                self.tail = None
+                self.heartbeattimeoutserver = heartbeattimeoutserver
+                self.chainextensionEnable = chainextensionEnable
+                self.chainExtensionFailureMaxMsg = chainExtensionFailureMaxMsg
+                self.master = master
+        def getServers(self):
+                return self.servers
+        def getBankName(self):
+                return self.bankName
+        def setServers(self, servers):
+                self.servers = servers
+                #if self.chainextensionEnable == 1:
+                #       time.sleep(10)		
+                #       self.startChainExtension()	
+       
+        def startChainExtension(self, maxrequest):
+                servername = self.bankName + "::(server::extension(new tail)" + ")::"
+                s = new(server)
+                setup(s, [servername, None, None, None, self, self.master, maxrequest, 0, self.heartbeattimeoutserver])
+                start(s)
+ 
+        def setupServers(self, nservers, timeouts, heartbeattimeoutserver):
+                #print(self.name+ "server timeout list size  " + str(len(timeouts)))
+                #config(channel= 'fifo')
+                self.servers = list(new(server, num = nservers))
+                for j,s in enumerate(self.servers):
+                        if j == 0:
+                              #head
+                              if len(self.servers) > 1:
+                                    successor = self.servers[j+1]
+                              else:
+                                    successor = None
+                              servername = self.bankName + "::head(server" + str(j+1) + ")::"
+                              setup(s, [servername, 'head', successor, None, self, self.master, timeouts[j], 0, heartbeattimeoutserver])
+                              self.head = s	
+                        elif j == nservers - 1:
+                              #tail
+                              predecessor = self.servers[j-1]
+                              servername = self.bankName + "::tail(server" + str(j+1) + ")::"
+                              setup(s, [servername, 'tail', None, predecessor, self, self.master, timeouts[j], self.chainExtensionFailureMaxMsg, heartbeattimeoutserver])
+                              self.tail = s
+                        else:
+                              #internal server
+                              servername = self.bankName + "::server" + str(j+1) + "::"
+                              successor = self.servers[j+1]
+                              predecessor = self.servers[j-1]
+                              #if j == 1:
+                              #        setup(s, [servername, 'normal', successor, predecessor, self, self.master, 1])
+                              #elif j == 2:
+                              #        setup(s, [servername, 'normal', successor, predecessor, self, self.master, 2])
+                              #else:
+                              setup(s, [servername, 'normal', successor, predecessor, self, self.master, timeouts[j], 0, heartbeattimeoutserver])
+                start(self.servers)
+                if self.chainextensionEnable == 1:
+                       #time.sleep(10)
+                       maxrequest = timeouts[len(self.servers)]
+                       self.startChainExtension(maxrequest) 
+        def getHead(self):
+                 return self.head
+	
+        def setHead(self, head):
+                 self.head = head
+
+        def setTail(self, tail):
+                 self.tail = tail
+
+        def getTail(self):
+                 return self.tail
+
+        def openAccount(self, accNum):
+                acc = account(accNum)
+                self.accountList.append(acc)
+                return acc
+
+        def getAccount(self, accNum):
+                for account in self.accountList:
+                        if account.accountNum == accNum:
+                              return account
+                return None
+
+        def deposit(self, accNum, amount):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                account.deposit(amount)
+
+        def withdraw(self, accNum, amount):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                return account.withdraw(amount)
+
+        def getBalance(self, accNum):
+                account = self.getAccount(accNum)
+                if account is None:
+                        account = self.openAccount(accNum)
+                return account.getBalance()
+
+class master(process):
+	def setup(banks, bankclientmap, timeout):
+		self.name = 'master::'
+		self.banks = banks
+		self.timeout = timeout
+		self.rcvd = set()
+		self.bankclientmap = bankclientmap
+		self.chainExtensionReq = False
+		self.newJoineeBank = None
+		self.newJoinee = None
+		self.bankinfo = {}
+		output(self.name + " set up called...")
+	def main():
+		output(self.name + " main called...")
+		for bank in banks:
+			output(self.name + "creating map  bankname " + bank.getBankName())
+			self.bankinfo[bank.getBankName()] = (bank.getHead(),bank.getTail())        
+		for bank in banks:
+			servers = bank.getServers()	
+			for s in servers:
+				send(('bankdetail', self.bankinfo), to=s)
+		heartbeat()
+
+	def notifyAllServers(failbank, head, tail):
+		output(self.name + "notifing new bank details for all the servers")
+		for bank in banks:
+			servers = bank.getServers()
+			for s in servers:
+				send(('updatebankdetail', failbank.getBankName(), head, tail), to=s)	
+		#updatebankdetail
+
+	def heartbeat():
+		#while self.heartbeatflag == True:
+		while True:
+			if await(False):
+				pass
+			elif timeout(timeout):
+				output(self.name + "timeout called...")
+				for bank in banks:
+					servers = bank.getServers()
+					output(self.name + "no of servers " + str(len(servers)))
+					for s in servers:
+						if s not in rcvd:
+							output(self.name + "hearbeat not received")
+							index = servers.index(s)
+							if index == 0:
+								newHead = servers[index+1]
+								send(('rolechange','head'), to=newHead)
+								clients = self.bankclientmap[bank]
+								self.bankinfo[bank.getBankName()] = (newHead,bank.getTail())
+								for c in clients:
+									send(('newhead', newHead), to = c)
+								notifyAllServers(bank, newHead, bank.getTail())
+								bank.setHead(newHead)
+							elif index == len(servers) - 1:
+								# tail crashed make T- new tail
+								output(self.name + " tail crashed.")
+								newTail = servers[index-1]
+								send(('rolechange','tail'), to=newTail)
+								self.bankinfo[bank.getBankName()] = (bank.getHead(),newTail)
+								if self.chainExtensionReq == True and self.newJoinee != None:
+									#new tail want to join
+									send(('newjoinee',self.newJoinee), to=newTail)
+									output(self.name + "taail failed sending new joinee to new tail ")
+								clients = self.bankclientmap[bank]
+								#output(self.name+ "client size " + str(len(clients)))
+								for c in clients:
+									send(('newtail', newTail), to = c)
+								notifyAllServers(bank, bank.getHead(), newTail)
+								bank.setTail(newTail)
+							else:
+								#internal server crashed recover make tell S- about new successor and S+ about predecessor
+								predecessor = servers[index-1]   #wrt crashed server
+								successor = servers[index + 1]  #wrt crashed server
+								send(('newsuccessor',successor), to=predecessor)
+								send(('newpredecessor',predecessor), to=successor)
+							servers.remove(s)
+							bank.setServers(servers)
+							output(self.name + "crashed server in chain index is " + str(index))
+							#send(('terminate',), to=s)		
+				self.rcvd = set()
+				heartbeat()
+	
+	def recv(msg=('wanttojoin', bank), from_=source):
+		self.chainExtensionReq = True
+		#self.heartbeatflag = False
+		self.newJoineeBank = bank
+		self.newJoinee = source
+		output(self.name + "wanttojoin request received...")
+		oldtail = bank.getTail()	
+		send(('newjoinee',source), to=oldtail)
+		#if await(False):
+		#	pass
+		#elif timeout(timeout):
+		#	self.chainExtensionReq = False
+	
+	def recv(msg=('synccomplete',bank), from_=source):	
+		self.chainExtensionReq = False
+		#send(('rolechange', 'tail'), to=source)
+		for bank1 in banks:
+			if bank.getBankName() == bank1.getBankName():
+				servers = bank1.getServers()
+				servers.append(source)
+				bank1.setServers(servers)
+				oldtail = bank1.getTail()
+				bank1.setTail(source)
+				clients = self.bankclientmap[bank1]
+				for c in clients:
+					send(('newtail', source), to = c)
+		send(('rolechange','normal'), to=oldtail)
+		send(('newsuccessor',source), to=oldtail)
+		send(('rolechange', 'tail'), to=source)
+		send(('newpredecessor',oldtail), to=source)
+	
+	def recv(msg=('heartbeat',), from_=source):
+		output(self.name + "heartbeat received...")
+		rcvd.add(source)
+def main():
+	name = "ChainReplication::"
+	print(name + "reading config file...")
+	seq=1
+	parser = configparser.SafeConfigParser()
+	parser.read('config.ini')
+	numBank = int(parser.get('config_test', 'numBank'))
+	banklist = []
+	bankmaster = new(master)
+	bankclientmap = {}
+	config(channel=('unfifo', 'unreliable'))	
+	for t in range(1,numBank+1):
+		bankname = parser.get('config_test', 'bank' + str(t))
+		print(name + "bank name:" + bankname)
+		heartbeattimeoutmaster = int(parser.get('config_test', 'heartbeattimeoutmaster'))
+		heartbeattimeoutserver = int(parser.get('config_test', 'heartbeattimeoutserver'))
+		chainextensionEnable = int(parser.get('config_test', 'bank' + str(t) + 'chainextensionenable'))
+		#start servers and clients
+		nclients = int(parser.get('config_test', 'bank' + str(t) + 'client'))
+		clienttimeout = int(parser.get('config_test', 'bank' + str(t) + 'clienttimeout'))
+		clientsleepafternumrequests = int(parser.get('config_test', 'bank' + str(t) + 'clientsleepafternumrequests'))
+		clientignorerequests = int(parser.get('config_test', 'bank' + str(t) + 'clientignorerequests'))
+		retransmittimeout = int(parser.get('config_test', 'bank' + str(t) + 'retransmitTimeout'))
+		nservers = int(parser.get('config_test', 'bank' + str(t) + 'servers'))
+		timeouts = []
+		for index in range(1,nservers+1):
+			timeout = int(parser.get('config_test', 'bank' + str(t) + 'server' + str(index) + 'maxrequests'))
+			#print(name + 'timeoutssssssss   ' + str(timeout))
+			timeouts.append(timeout)
+		chainExtensionFailureMaxMsg = 0
+		if chainextensionEnable == 1:
+			timeout = int(parser.get('config_test', 'bank' + str(t) + 'extendedservermaxrequests'))
+			chainExtensionFailureMaxMsg = int(parser.get('config_test', 'bank' + str(t) + 'server3chainextensionfailuremsgnum'))
+			print(name + "chainExtensionFailureMaxMsg: " + str(chainExtensionFailureMaxMsg))
+			timeouts.append(timeout)
+		#config(channel=('unfifo', 'unreliable'))
+		clients = list(new(client, num = nclients))
+		bank = Bank(bankname, bankmaster, chainextensionEnable, chainExtensionFailureMaxMsg, heartbeattimeoutserver)
+		banklist.append(bank)
+		bank.setupServers(nservers,timeouts, heartbeattimeoutserver)
+		head = bank.getHead()
+		tail = bank.getTail() 
+		
+		#send auto requests
+		bankreqType = parser.get('config_test', 'bank' + str(t) + 'reqType')
+		for i in range(1,nclients+1):
+			requestList = []
+			if bankreqType == 'auto':
+				numReq = int(parser.get('config_test', 'bank' + str(t) + 'numReq'))
+				numGetBalance = float(parser.get('config_test', 'bank' + str(t) + 'probGetBalance')) * numReq
+				numDeposit = float(parser.get('config_test', 'bank' + str(t) + 'probDeposit')) * numReq;
+				numWithdraw = float(parser.get('config_test', 'bank' + str(t) + 'probWithdraw')) * numReq;
+				accNo = random.randint(1, 100000)
+				dstAccNo = random.randint(1, 100000)	
+				print("shashiiiiiiiiii" + str(dstAccNo))
+					#amt = random.randint(1, 1000)
+				numTransfer = float(parser.get('config_test', 'bank' + str(t) + 'probTransfer')) * numReq;
+
+				while numReq!=0:
+					select = random.randint(1, 100000)%4
+					#accNo = random.randint(1, 100000)
+					amt = random.randint(1, 1000)
+					if (numDeposit > 0 and select==0):
+						reqId = parser.get('config_test', 'bank' + str(t) ) + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.Deposit,accNo, amt, None, None))
+						numDeposit = numDeposit-1
+						numReq=numReq-1
+						seq = seq+1
+					if (numWithdraw > 0 and select==1):
+						reqId = parser.get('config_test', 'bank' + str(t)) + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.Withdraw,accNo, amt, None,None))
+						numWithdraw = numWithdraw-1
+						numReq=numReq-1
+						seq = seq+1
+					if (numGetBalance > 0 and select==2):
+						reqId = parser.get('config_test', 'bank' + str(t)) + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqId, RequestType.GetBalance,accNo, None, None,None))
+						numGetBalance = numGetBalance-1
+						numReq=numReq-1
+						seq = seq+1
+					if (numTransfer > 0 and select==3):
+						bno=random.randint(1, numBank)
+						#dstAccNo = random.randint(1, 100000)
+						if (bno!=t):
+							bname = parser.get('config_test', 'bank' + str(bno))
+							reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+							requestList.append((reqId, RequestType.Transfer,accNo,amt, bname,dstAccNo)) #change
+							numTransfer = numTransfer-1
+							numReq=numReq-1
+							seq = seq+1
+			elif bankreqType == 'itemized':
+				bankitemisedReq = parser.get('config_test', 'bank' + str(t) + 'client' + str(i) + 'itemisedReq')
+				reqlist = bankitemisedReq.split(';')
+				
+				for m in range(len(reqlist)):
+					reqtype=reqlist[m].split(":")
+					operation = reqtype[0]
+					if operation == 'getBalance':
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqargs[1], RequestType.GetBalance, int(reqargs[0]), None, None, None))
+						#bank.getBalance(int(reqargs[0]))
+						#seq = seq+1
+					if operation == 'deposit':
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						requestList.append((reqargs[2], RequestType.Deposit, int(reqargs[0]), int(reqargs[1]), None, None))
+						#bank.deposit(int(reqargs[0]), int(reqargs[1]))
+						#seq = seq+1
+					if operation == 'withdraw':		
+						reqargs = reqtype[1].split(",")
+						#reqId = parser.get('config_test', 'bank' + str(t) + 'client') + "." + "client" + str(i) + "." + str(seq)
+						#bank.deposit(int(reqargs[0]), int(reqargs[1]))
+						requestList.append((reqargs[2], RequestType.Withdraw, int(reqargs[0]), int(reqargs[1]),None, None))
+						#seq = seq+1
+					if operation == 'transfer':                
+						reqargs = reqtype[1].split(",")
+						requestList.append((reqargs[2], RequestType.Transfer, int(reqargs[0]), int(reqargs[1]), reqargs[3], int(reqargs[4])))
+			clientname = bankname + "::client" + str(i) + "::"
+			c = clients[i-1]
+			setup(c, [head, tail, requestList, clientname, clienttimeout, clientsleepafternumrequests, retransmittimeout, clientignorerequests])	
+		start(clients)			
+		bankclientmap[bank]=clients
+	#end of banks
+	#m = new(master)
+	setup(bankmaster,[banklist, bankclientmap, heartbeattimeoutmaster])
+	start(bankmaster)	
+

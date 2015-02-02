@@ -1,0 +1,53 @@
+1.duplicate request testcase:
+	Description:
+		this test case checks when the duplicate requests are sent to source bank head server.
+	configuration file:
+		config/config_duplicate_request.ini
+	log file:
+		log/chainreplication.da.log_duplicate_request
+
+2.insufficient balance testcase:
+	Description:
+		this test case checks when the transfer request is sent when the source bank account does not have sufficient balance for transfer.
+	configuration file:
+		config/config_insufficient_funds.ini
+	log file:
+		log/chainreplication.da.log_insufficient_funds
+
+2.normal transfer two banks testcase:
+	Description:
+		this test case tests when a transfer request is success without any server failure scenarios.
+	configuration file:
+		config/config_normal_transfer_twobanks.ini
+	log file:
+		log/chainreplication.da.log_normal_transfer_twobanks
+
+4. destination bank head fail testcase:
+	Description:
+		this test case tests when during transfer request the head server of destination bank fails.
+	configuration file:
+		config/config_dstbank_tail_failure.ini
+	log file:
+		log/chainreplication.da.log_dstbank_head_failure
+
+5. source bank tail fails and destination bank head fails testcase:
+	Description:
+		this test case tests when source bank tail fails after sending request and simulataneously destination bank head server fails after reciving request.
+	configuration file:
+		config/config_dstbank_headfailure_srcbank_tailfailure.ini
+	log file:
+		log/chainreplication.da.log_dstbank_headfailure_srcbank_tailfailure
+
+6. multiple bank multiple client
+	Description:
+		this test case tests when there are three banks with six clients each with random and itemised request
+	configuration file:
+		config/config_multipleclient_multipleserver.ini
+	log file:
+		log/chainreplication.da.log_multiple_client_multiple_banks
+
+
+
+
+
+
