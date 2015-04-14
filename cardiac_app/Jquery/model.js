@@ -143,6 +143,7 @@ function onclick_handler(el)
         //el.parentElement.parentElement.innerHTML = el.parentElement.parentElement.innerHTML + str;//el.parentElement.parentElement.children[0].innerHTML;
         //my_node = nodeToStr(str);
         n = my_node.children[0];
+
       }
      // el.parentElement.parentElement.append(newstr);
      c++;
@@ -193,7 +194,11 @@ function nodeToString (node) {
    var tmpNode = document.createElement( "div" );
    tmpNode.appendChild(node.cloneNode(true));
    var node = tmpNode.children[0];
+   tmpNode.children[0].children[3].children[0].children[1].children[0].src = '/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png';
+   
+   tmpNode.children[0].children[3].children[0].children[1].id = 'add_new';
    node.removeAttribute("class");
+
    node.className = "ca_row";
    //$('hidden').toggleClass('disabled');
    //node.style.visibility='visible';
