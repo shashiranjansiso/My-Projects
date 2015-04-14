@@ -114,6 +114,8 @@ function startTimer()
       var str = nodeToString(elements);
       flag = false;
       $('#mytable').append(str);
+      //$('#mytable').parentElement.scrollTop(1000);
+
       //var newrow = ""
       //$("#table_body").append(element);
 
@@ -152,6 +154,7 @@ function onclick_handler(el)
      //my_node.id = c;
      //my_node.children[0].children[0].children[0].children[0].children[1].id=c;
      el.parentElement.parentElement.appendChild(div);
+
     //el.parentElement.parentElement.appendChild(wrapper.children[0]);
     //el.parentElement.parentElement.innerHTML = el.parentElement.parentElement.innerHTML + my_node.innerHTML;
      // alert(el.parentElement.parentElement.innerHTML);

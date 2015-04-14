@@ -90,7 +90,7 @@
 </div> 
 
 <!--cardiac data page -->
-<div data-role="page" id="cardiac_data">
+<div data-role="page" id="cardiac_data" style="background-color:white;">
   
   <div data-role="header">
     <a href="#home" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left">Home</a>
@@ -98,7 +98,7 @@
     <a href="#" class="ui-btn ui-corner-all ui-shadow ui-icon-search ui-btn-icon-left">Search</a>
   </div>
 
-  <div style="overflow: auto;max-height: 650px;">
+  <div style="overflow: auto;">
     <div style="margin-left:30px;">
       <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/cardiac_app_icon.png" style="height:100px; width:100px; float:left;">
       <label style="margin-top:45px; font-size:175%;"><span style="color:green; font-weight:bold;">Cardiac A.</span></label>
@@ -114,8 +114,9 @@
       <label for="code" id="code" style="margin-left:1350px;">CODE: 0</label>
     </div>
    
-      <div data-role="controlgroup" id="cardiac_data_row" data-type="vertical">
-        <table id="mytable" class="ui-widget" style= cellpadding="0" cellspacing="0">
+      <div data-role="controlgroup" id="cardiac_data_row" data-type="vertical" style="height:350px; overflow-y:scroll;">
+
+        <table id="mytable" class="ui-widget" cellpadding="0" cellspacing="0" style="margin-left:1%; margin-right:1%;">
           <thead class="ui-widget-header">
             <tr style="color:white; background-color:rgb(69, 91, 202);">
               <th>Time</th>
@@ -124,7 +125,7 @@
               <th>Pulse check</th>
               <th>Monitoring</th>
               <th>Intervention</th>
-              <th>EPINOPHRINE</th>
+              <th>  Epinephrine </th>
               <th>Bolus</th>
               <th>Infusion</th>
             </tr>
@@ -133,7 +134,7 @@
           <!-- first row -->
         <tr class="ca_row" id="ca_row1">
            <td>
-             <label for="time" id="time">1:0</label>
+             <label for="time" id="time">1:00</label>
            </td>
             <td  >
               
@@ -218,7 +219,7 @@
 
         <tr class="ca_row" id="ca_row1">
            <td>
-             <label for="time" id="time">2:0</label>
+             <label for="time" id="time">2:00</label>
            </td>
             <td   >
               
@@ -302,7 +303,7 @@
           <!-- third row -->
         <tr class="ca_row" id="ca_row1">
            <td>
-             <label for="time" id="time">3:0</label>
+             <label for="time" id="time">3:00</label>
            </td>
             <td   >
               
