@@ -15,6 +15,25 @@
 	display: none;
 }
 
+.select_class
+{
+	width: 50%;
+	float:left;
+}
+
+.image_class
+{
+	float:right;
+
+}
+
+.text_class
+{
+	width: 30%;
+	float:left;
+	margin-left: 15px;
+}
+
 .portrait
 {
 	float: right;
@@ -60,7 +79,7 @@ th
 
 .child_select
 {
-	width: 80%;
+	/*width: 80%;*/
 	height: 100%;
 	
 }

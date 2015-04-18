@@ -127,6 +127,8 @@ function startTimer()
 }
 
 var my_node = 0;
+var monitoring_node = 0;
+var c_id = 0;
 var c = 0;
 var n;
 function onclick_handler(el)
@@ -165,8 +167,37 @@ function onclick_handler(el)
       //el.parentElement.innerHTML = '<div class="portrait" id = "add_new" onclick="onclick_handler(this);"> <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png"> </div>';
       //alert(el.id);
       //el.parentNode.removeChild(el);
-      el.parentElement.parentElement.removeChild(el.parentElement.parentElement.children[1])
+      //el.parentElement.parentElement.removeChild(el.parentElement.parentElement.children[1])
+      el.parentElement.parentElement.removeChild(el.parentElement);
     }
+
+    else if(el.id == 'add_new_monitoring')
+    {
+       var elements = document.getElementById("ca_row_hidden");
+       if(monitoring_node == 0)
+        { 
+           monitoring_node = elements.children[4];  //monitoring
+        //alert(el.parentElement.parentElement.innerHTML);
+          //el.parentElement.parentElement.parentElement.innerHTML = el.parentElement.parentElement.parentElement.innerHTML + '<div class="parent_fill"> <div class="child_select block_align"> <select name="Pulse" id="Pulse" > <option selected="selected">Select</option> <option >Pea</option> <option>Asystole</option></select></div> <div class="portrait" id = "add_new" onclick="onclick_handler(this);" <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png"> </div>';
+        //str = el.parentElement.parentElement.innerHTML + str;
+        //el.parentElement.parentElement.innerHTML = el.parentElement.parentElement.innerHTML + str;//el.parentElement.parentElement.children[0].innerHTML;
+        //my_node = nodeToStr(str);
+          var n = monitoring_node.children[0];
+        }
+        c_id++;
+        var wrapper= document.createElement('div');
+       wrapper.innerHTML= monitoring_node.innerHTML;
+       var div= wrapper.children[0];
+       div.id = c_id;
+       el.id = "delete";
+       el.children[0].src = "/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/delete.png"
+        el.parentElement.parentElement.appendChild(div);
+      }
+      //el.parentElement.innerHTML = '<div class="portrait" id = "add_new" onclick="onclick_handler(this);"> <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png"> </div>';
+      //alert(el.id);
+      //el.parentNode.removeChild(el);
+      //el.parentElement.parentElement.removeChild(el.parentElement.parentElement.children[1])
+      //alert("id");
 }
 
 function add_new_control(el)
@@ -176,6 +207,9 @@ function add_new_control(el)
 }
 function handle_select_change(el)
 {
+
+
+  //el.children[0].children[0].children[0].innerHTML = el.children[0].children[0].children[1].value;
   el.parentElement.children[0].innerHTML=el.value;
   //  alert('reached');
 }

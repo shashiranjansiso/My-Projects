@@ -171,7 +171,9 @@
               </div>-->
             </div>
             </td>
-             <td   >
+             <td  style="width:20%;">
+              <div class="parent_fill">
+                <div class="child_select block_align select_class">  
                 <select name="Monitoring" id="Monitoring" onc>
                   <option selected="selected">Select</option>
                   <option>Bedside us</option>
@@ -180,6 +182,16 @@
                   <option>Artlines map</option>
                   <option>Normal Synus</option>
               </select>
+              </div>
+              <div class="text_class">
+
+                <input type="text"  name="monitoring" id="monitoring">
+              </div>
+              <div class="portrait image_class" id = "add_new_monitoring" onclick="onclick_handler(this);">
+                <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png">
+              </div>
+
+            </div>
             </td>
             <td   >
                 <select name="Intervention" id="Intervention" >
@@ -416,15 +428,17 @@
                     
                 </select>
             </div>
-              <div class="portrait" id = "delete" onclick="onclick_handler(this);">
-                <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/delete.png">
+              <div class="portrait" id = "add_new" onclick="onclick_handler(this);">
+                <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png">
               </div>
               <!--<div style="background-image: url('/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png')">
               </div>-->
             </div>
             </td>
-             <td   >
-                <select name="Monitoring" id="Monitoring" >
+            <td  style="width:20%;">  
+              <div class="parent_fill">
+                <div class="child_select block_align select_class">  
+                <select name="Monitoring" id="Monitoring" onchange="handle_select_change(this);">
                   <option selected="selected">Select</option>
                   <option>Bedside us</option>
                   <option>Brain Ox</option>
@@ -432,6 +446,16 @@
                   <option>Artlines map</option>
                   <option>Normal Synus</option>
               </select>
+              </div>
+              <div class="text_class">
+
+                <input type="text"  name="monitoring" id="monitoring">
+              </div>
+              <div class="portrait image_class" id = "add_new_monitoring" onclick="onclick_handler(this);">
+                <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png">
+              </div>
+
+            </div>
             </td>
             <td   >
                 <select name="Intervention" id="Intervention" >
