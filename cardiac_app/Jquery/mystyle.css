@@ -92,5 +92,15 @@ th
 
 .block_align
 {
-	display: inline-block;
+	/*display: inline-block;*/
+}
+
+.infusion_div
+{
+	widht:90px;
+	float:left;
+}
+
+.active{
+	background-color:rgb(151, 216, 156);
 }

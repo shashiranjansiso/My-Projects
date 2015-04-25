@@ -208,9 +208,33 @@ function add_new_control(el)
 function handle_select_change(el)
 {
 
+  if(el.id == 'Intervention')
+  {
+     
+    if(el.value == 'Defrib')
+    {
+      el.parentElement.style.width='40%';
+       //add text
+      el.parentElement.parentElement.parentElement.parentElement.children[1].innerHTML+='<input type="text"  name="monitoring" id="monitoring">';
+    }
+       
+    else if(el.value == 'Airway')
+    {
+      el.parentElement.style.width='40%';
+    }
+      //add drop down
+    else
+    {
 
+      //remove 
+     el.parentElement.style.width='0%';
+   }
+
+   // alert(el.value);
+  }
+  else
   //el.children[0].children[0].children[0].innerHTML = el.children[0].children[0].children[1].value;
-  el.parentElement.children[0].innerHTML=el.value;
+    el.parentElement.children[0].innerHTML=el.value;
   //  alert('reached');
 }
 
@@ -228,9 +252,9 @@ function nodeToString (node) {
    var tmpNode = document.createElement( "div" );
    tmpNode.appendChild(node.cloneNode(true));
    var node = tmpNode.children[0];
-   tmpNode.children[0].children[3].children[0].children[1].children[0].src = '/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png';
+   //tmpNode.children[0].children[3].children[0].children[1].children[0].src = '/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png';
    
-   tmpNode.children[0].children[3].children[0].children[1].id = 'add_new';
+   //tmpNode.children[0].children[3].children[0].children[1].id = 'add_new';
    node.removeAttribute("class");
 
    node.className = "ca_row";
@@ -239,4 +263,25 @@ function nodeToString (node) {
    var str = tmpNode.innerHTML;
    tmpNode = node = null; // prevent memory leaks in IE
    return str;
+}
+
+
+function toggle_handler(node)
+{
+    var c = node.className;
+    var pos = c.search("active");
+    if(pos ==  -1)
+    {
+      //add active class to node
+      node.className += ' active';
+      node.style.backgroundColor = "rgb(151, 216, 156)";
+    } 
+    else
+    {
+      //remove active class from node
+      node.className = 'ui-btn ui-shadow ui-corner-all';
+      node.style.backgroundColor = "#f6f6f6";
+
+    }
+    /*node.toggleClass('active');*/
 }
