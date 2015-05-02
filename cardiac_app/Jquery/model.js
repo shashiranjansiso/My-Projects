@@ -178,7 +178,7 @@ function startTimer()
         sec++;
         //hightlight eh current row
         var table = document.getElementById("mytable");
-        if(count%10 == 0)  //1 min
+        if(count%60 == 0)  //1 min
         {
           min++;
           flag = true;
@@ -189,10 +189,10 @@ function startTimer()
         document.getElementById("epi").innerHTML = 'EPI:' + min + ":" + count%60;
         document.getElementById("code").innerHTML = 'CODE:' + min + ":" + count%60;
         if(min -1 >= 0)
-            table.children[1].children[min-1].style.backgroundColor = 'white'; 
+            table.children[0].children[min-1].style.backgroundColor = 'white'; 
         if(min < 3)
         {
-          table.children[1].children[min].style.backgroundColor = 'red'; 
+          table.children[0].children[min].style.backgroundColor = 'red'; 
           return;
         }
         if(flag == false)
@@ -216,8 +216,9 @@ function startTimer()
       flag = false;
       $('#mytable').append(str);
       if(min >= 0)
-            table.children[1].children[min].style.backgroundColor = 'white';
-      table.children[1].children[min+1].style.backgroundColor = 'red';
+            table.children[0].children[min].style.backgroundColor = 'white';
+      table.children[0].children[min+1].style.backgroundColor = 'red';
+      document.getElementById('cardiac_data_row').style.overflowY = 'scroll';
       //$('#mytable').parentElement.scrollTop(1000);
 
       //var newrow = ""
