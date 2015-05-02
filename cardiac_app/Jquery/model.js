@@ -30,15 +30,109 @@ function createRequest(flag_v)
       myObj["Gender"] = document.getElementById("gender").value;
       myObj["Age"] = document.getElementById("age").value;
       myObj["Email"] = document.getElementById("email").value;
-      var request = "request=";
+      var request = "request=new_patient";
       var json = request.concat(JSON.stringify(myObj));
       $.post("http://localhost:8080/RestfulWebservice/rs/service/postSomething",
             json);
     //alert(json);
+    //send_code_data_to_server();
   }
   startTimer();
   window.location = "index.html#cardiac_data";
 }
+
+function send_code_data_to_server()
+{
+    var patient_data = {};
+    /*patient_data["time"] = document.getElementById("fullname").value;
+    patient_data["cpr"] = document.getElementById("bday").value;
+    patient_data["cpr_timestamp"] = document.getElementById("gender").value;
+    patient_data["pulseCheck"] = document.getElementById("age").value;
+    patient_data["rhythm"] = document.getElementById("email").value;
+    patient_data["monitoring_key"] = document.getElementById("email").value;
+    patient_data["monitoring_value"] = document.getElementById("email").value;
+    patient_data["Intervention_key"] = document.getElementById("email").value;
+    patient_data["Intervention_value"] = document.getElementById("email").value;
+    patient_data["epinephrine"] = document.getElementById("email").value;
+    patient_data["bolus"] = document.getElementById("email").value;
+    patient_data["infusion"] = document.getElementById("email").value;*/
+
+    var table_body = document.getElementById('table_body');
+    var no_of_rows = table_body.childElementCount -1;
+    var i;
+    for(i = 0; i <no_of_rows; i++)
+    {
+        //fetch data for each row and send to server
+        var tr = table_body.children[i];
+        var time_td = tr.children[0];
+        var time = time_td.children[0].innerHTML;
+        patient_data["time"] = time;
+        var cpr_td = tr.children[1];
+        var cpr = cpr_td.children[0].children[0].children[1].value;
+        patient_data["cpr"] = cpr;
+        //var cpr_td = tr.children[2];
+        //var cpr = cpr_td.children[0].value;
+        patient_data["cpr_timestamp"] = "abc";
+
+        var pulsecheck_td = tr.children[2];
+        var pulsecheck = pulsecheck_td.children[0].children[0].value;
+        if(pulsecheck == 'on')
+          patient_data["pulseCheck"] = "TRUE";
+        else
+          patient_data["pulseCheck"] = "FALSE";
+
+        var rhythm_td = tr.children[3];
+        var rhythm = rhythm_td.children[0].children[0].children[0].children[0].children[1].value;
+        patient_data["rhythm"] = rhythm;
+
+        var monitoring_td = tr.children[4];
+        var monitoring_key = monitoring_td.children[0].children[0].children[0].children[0].children[1].value;
+        patient_data["monitoring_key"] = monitoring_key;
+        
+        var monitoring_value = monitoring_td.children[0].children[1].children[0].children[0].innerHTML;
+        patient_data["monitoring_value"] = monitoring_value;
+
+        var intervention_td = tr.children[5];
+        var intervention_key = intervention_td.children[0].children[0].children[0].children[0].children[1].value;
+        patient_data["intervention_key"] = intervention_key;
+
+        //var intervention_value = intervention_td.children[0].children[1].children[0].children[0].innerHTML;
+        patient_data["intervention_value"] = "abc";
+
+        var epinephrine_td = tr.children[6];
+        var epinephrine = epinephrine_td.children[0].children[0].innerHTML;
+        patient_data["epinephrine"] = epinephrine;
+
+        var bolus_td = tr.children[7];
+        var bolus = bolus_td.children[0].children[0].children[0].children[0].children[1].value;
+        patient_data["bolus"] = bolus;
+
+        var infusion_td = tr.children[8];
+        var infusion_count = infusion_td.children[0].children[0].childElementCount;
+        var infusion_data;
+        var infusion = "";
+        var j;
+        for(j = 0; j <infusion_count; j++)
+        {
+            infusion_data = infusion_td.children[0].children[0].children[j];
+            var c = infusion_data.children[0].className;
+            var pos = c.search("active");
+            if(pos !=  -1)
+            {
+              //add active class to node
+              infusion = infusion + infusion_data.children[0].innerHTML;
+            }
+        }
+        patient_data["infusion"] = infusion;
+
+        var request = "request=code_data";
+        var json = request.concat(JSON.stringify(patient_data));
+        $.post("http://localhost:8080/RestfulWebservice/rs/service/postSomething",
+              json);
+    }
+   
+    //alert(json);
+  }
 
 function getPatientInformation()
 {
@@ -82,21 +176,28 @@ function startTimer()
         
         count++;
         sec++;
-        
-        if(count%60 == 0)  //1 min
+        //hightlight eh current row
+        var table = document.getElementById("mytable");
+        if(count%10 == 0)  //1 min
         {
           min++;
           flag = true;
           sec = 0;
+          $('.table-container').scrollTop(10000);
         }
         document.getElementById("cpr").innerHTML = 'CPR:' + min + ":" + count%60;
         document.getElementById("epi").innerHTML = 'EPI:' + min + ":" + count%60;
         document.getElementById("code").innerHTML = 'CODE:' + min + ":" + count%60;
-        if(min < 4)
+        if(min -1 >= 0)
+            table.children[1].children[min-1].style.backgroundColor = 'white'; 
+        if(min < 3)
+        {
+          table.children[1].children[min].style.backgroundColor = 'red'; 
           return;
+        }
         if(flag == false)
           return;
-
+        //send_code_data_to_server();
         //$('.timer').html('Time Elapsed:' + count);
         
        // var element = document.getElementById("mytable");
@@ -109,11 +210,14 @@ function startTimer()
       var elements = document.getElementById("ca_row_hidden");
       var time = elements.children[0];
       time.id = 'time' + count;
-      var t = min + ":" + sec;
+      var t = (min+1) + ":" + sec + '0';
       time.innerHTML = t;
       var str = nodeToString(elements);
       flag = false;
       $('#mytable').append(str);
+      if(min >= 0)
+            table.children[1].children[min].style.backgroundColor = 'white';
+      table.children[1].children[min+1].style.backgroundColor = 'red';
       //$('#mytable').parentElement.scrollTop(1000);
 
       //var newrow = ""
@@ -128,6 +232,7 @@ function startTimer()
 
 var my_node = 0;
 var monitoring_node = 0;
+var intervention_node = 0;
 var c_id = 0;
 var c = 0;
 var n;
@@ -190,8 +295,25 @@ function onclick_handler(el)
        var div= wrapper.children[0];
        div.id = c_id;
        el.id = "delete";
-       el.children[0].src = "/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/delete.png"
+       el.children[0].src = "delete.png";
         el.parentElement.parentElement.appendChild(div);
+      }
+      else if(el.id == 'add_new_intervention')
+      {
+          var elements = document.getElementById("ca_row_hidden");
+           if(intervention_node == 0)
+            { 
+               intervention_node = elements.children[5];  //monitoring
+                var n = intervention_node.children[0];
+            }
+            c_id++;
+            var wrapper= document.createElement('div');
+           wrapper.innerHTML= intervention_node.innerHTML;
+           var div= wrapper.children[0];
+           div.id = c_id;
+           el.id = "delete";
+           el.children[0].src = "delete.png";
+            el.parentElement.parentElement.appendChild(div);
       }
       //el.parentElement.innerHTML = '<div class="portrait" id = "add_new" onclick="onclick_handler(this);"> <img src="/Users/shashi/Desktop/shashi/course_material/advance_project/Jquery/plus.png"> </div>';
       //alert(el.id);
@@ -213,26 +335,33 @@ function handle_select_change(el)
      
     if(el.value == 'Defrib')
     {
-      el.parentElement.style.width='40%';
+      el.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[0].disabled=false;
+      el.parentElement.parentElement.parentElement.parentElement.children[1].className = "text_class";
+      el.parentElement.parentElement.parentElement.parentElement.children[2].className = "text_class hidden";
+      //el.parentElement.style.width='40%';
        //add text
-      el.parentElement.parentElement.parentElement.parentElement.children[1].innerHTML+='<input type="text"  name="monitoring" id="monitoring">';
+      //el.parentElement.parentElement.parentElement.parentElement.children[1].innerHTML+='<input type="text"  name="monitoring" id="monitoring">';
     }
        
     else if(el.value == 'Airway')
     {
-      el.parentElement.style.width='40%';
+     el.parentElement.parentElement.parentElement.parentElement.children[2].className = "text_class";
+      el.parentElement.parentElement.parentElement.parentElement.children[1].className = "text_class hidden";
+
     }
       //add drop down
     else
     {
-
+      el.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[0].disabled=true;
+      el.parentElement.parentElement.parentElement.parentElement.children[1].className = "text_class";
+      el.parentElement.parentElement.parentElement.parentElement.children[2].className = "text_class hidden";
       //remove 
-     el.parentElement.style.width='0%';
+    // el.parentElement.style.width='0%';
    }
 
    // alert(el.value);
   }
-  else
+  //else
   //el.children[0].children[0].children[0].innerHTML = el.children[0].children[0].children[1].value;
     el.parentElement.children[0].innerHTML=el.value;
   //  alert('reached');

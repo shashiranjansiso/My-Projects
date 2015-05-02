@@ -26,12 +26,15 @@
 	float:right;
 
 }
-
+.block_align
+{
+	/*display: inline-block;*/
+}
 .text_class
 {
 	width: 30%;
 	float:left;
-	margin-left: 15px;
+	margin-left: 6px;
 }
 
 .portrait
@@ -88,11 +91,6 @@ th
 {
 	width: 20%;
 	height: 100%;
-}
-
-.block_align
-{
-	/*display: inline-block;*/
 }
 
 .infusion_div
