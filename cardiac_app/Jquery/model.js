@@ -183,7 +183,7 @@ function startTimer()
           min++;
           flag = true;
           sec = 0;
-          $('.table-container').scrollTop(10000);
+         
         }
         document.getElementById("cpr").innerHTML = 'CPR:' + min + ":" + count%60;
         document.getElementById("epi").innerHTML = 'EPI:' + min + ":" + count%60;
@@ -218,7 +218,8 @@ function startTimer()
       if(min >= 0)
             table.children[0].children[min].style.backgroundColor = 'white';
       table.children[0].children[min+1].style.backgroundColor = 'red';
-      document.getElementById('cardiac_data_row').style.overflowY = 'scroll';
+      //document.getElementById('cardiac_data_row').style.overflowY = 'scroll';
+       $('.table-container').scrollTop(10000);
       //$('#mytable').parentElement.scrollTop(1000);
 
       //var newrow = ""
@@ -415,3 +416,19 @@ function toggle_handler(node)
     }
     /*node.toggleClass('active');*/
 }
+
+
+  var source = [
+      "Affogato",
+      "Americano",
+      "Bicerin",
+      "Breve",
+      "Café Bombón",
+      "Café au lait"];
+  // Create a jqxDropDownList
+  $("#jqxDropDownList").jqxDropDownList({
+      source: source,
+      selectedIndex: 3,
+      theme: 'energyblue',
+      checkboxes:true
+});
