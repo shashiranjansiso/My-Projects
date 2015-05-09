@@ -38,6 +38,7 @@ function createRequest(flag_v)
     //send_code_data_to_server();
   }
   startTimer();
+  load_jqxdropdown();
   window.location = "index.html#cardiac_data";
 }
 
@@ -220,6 +221,7 @@ function startTimer()
       table.children[0].children[min+1].style.backgroundColor = 'red';
       //document.getElementById('cardiac_data_row').style.overflowY = 'scroll';
        $('.table-container').scrollTop(10000);
+       load_jqxdropdown();
       //$('#mytable').parentElement.scrollTop(1000);
 
       //var newrow = ""
@@ -363,6 +365,19 @@ function handle_select_change(el)
 
    // alert(el.value);
   }
+  if(el.name == 'Rhythm')
+  {
+      if(el.value == 'PEA' || el.value == 'Asystole' || el.value == 'Vtach/Vfib')
+      {
+          el.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[0].children[0].innerHTML = 'Manual';
+          el.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[0].children[1].options[3].disabled = true;
+      }
+      else
+      {
+        el.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[1].children[0].children[0].children[1].options[3].disabled = false;
+      
+      }
+  }
   //else
   //el.children[0].children[0].children[0].innerHTML = el.children[0].children[0].children[1].value;
     el.parentElement.children[0].innerHTML=el.value;
@@ -432,3 +447,99 @@ function toggle_handler(node)
       theme: 'energyblue',
       checkboxes:true
 });
+
+
+function load_jqxdropdown(){          
+                var url = "sampledata/customers.json";
+                // prepare the data
+                var data = [
+                        { 
+                            "medName": "Norepinephrine", 
+                            "value": "67"
+                        },
+                        { 
+                            "medName": "Magnesium", 
+                            "value": "67"
+                        },
+                         { 
+                            "medName": "Amiodarone", 
+                            "value": "67"
+                        },
+                        { 
+                            "medName": "Atropine", 
+                            "value": "67"
+                        },
+                         { 
+                            "medName": "D50W", 
+                            "value": "67"
+                        },
+                        { 
+                            "medName": "D10W", 
+                            "value": "67"
+                        },
+                        { 
+                            "medName": "Sodium Bicarb", 
+                            "value": "67"
+                        },
+                        { 
+                            "medName": "Lido", 
+                            "value": "67"
+                        },
+                            ];
+
+                // prepare the data
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'medName' },
+                        { name: 'value' }
+                    ],
+                    localdata: data
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);
+                /*
+                var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'CompanyName' },
+                        { name: 'ContactName' }
+                    ],
+                    id: 'id',
+                    url: url,
+                    async: false
+                };
+                var dataAdapter = new $.jqx.dataAdapter(source);*/
+
+                // Create a jqxDropDownList
+                $(".jqxWidget").jqxDropDownList({ checkboxes: true, source: dataAdapter, displayMember: "medName", valueMember: "value", width: 170, height: 40});
+                $(".jqxWidget").jqxDropDownList('checkIndex', 0);
+                
+                // subscribe to the checkChange event.
+               /* $("#jqxWidget").on('checkChange', function (event) {
+                    if (event.args) {
+                        var item = event.args.item;
+                        if (item) {
+                            var valueelement = $("<div></div>");
+                            valueelement.text("Value: " + item.value);
+                            var labelelement = $("<div></div>");
+                            labelelement.text("Label: " + item.label);
+                            var checkedelement = $("<div></div>");
+                            checkedelement.text("Checked: " + item.checked);
+
+                            $("#selectionlog").children().remove();
+                            $("#selectionlog").append(labelelement);
+                            $("#selectionlog").append(valueelement);
+                            $("#selectionlog").append(checkedelement);
+
+                            var items = $("#jqxWidget").jqxDropDownList('getCheckedItems');
+                            var checkedItems = "";
+                            $.each(items, function (index) {
+                                checkedItems += this.label + ", ";                          
+                            });
+                            $("#checkedItemsLog").text(checkedItems);
+                        }
+                    }
+                });*/
+            }

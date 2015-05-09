@@ -6,7 +6,17 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script type="text/javascript" src="/Users/shashi/Downloads/jqwidgets-ver3.8.0/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="/Users/shashi/Downloads/jqwidgets-ver3.8.0/jqwidgets/jqxdropdownlist.js"></script>  
+ <link rel="stylesheet" href="jqwidgets-ver3.8.0/jqwidgets/styles/jqx.base.css" type="text/css" />
+<script type="text/javascript" src="jqwidgets-ver3.8.0/scripts/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/scripts/demos.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxcore.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxdata.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxbuttons.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxscrollbar.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxlistbox.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxdropdownlist.js"></script>
+<script type="text/javascript" src="jqwidgets-ver3.8.0/jqwidgets/jqxcheckbox.js"></script>
 <script src="jquery.timer.js"></script>
 <script src="model.js"></script>
 </head>
@@ -314,7 +324,7 @@
           <td id = "plus_td">
             <div class="parent_fill">
                 <div class="child_select block_align">  
-                  <select name="Pulse" >
+                  <select name="Rhythm" id="Rhythm" onchange="handle_select_change(this);">
                     <option selected="selected">Select</option>
                     <option >PEA</option>
                     <option>Asystole</option>
@@ -407,8 +417,11 @@
             </td>
             <td style="width:170px;">
                 <!--<input type="text" name="Infusion" id="Infusion"--> 
-
-                <div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
+                <div id='content'>
+                    <div style='float: left;' class="jqxWidget">
+                    </div>
+                </div>
+                <!--div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
                   
                   <div style="width:1000px;">
                      
@@ -445,7 +458,7 @@
                        </div>
 
                   </div> 
-               </div> 
+               </div--> 
             </td>
         </tr>
 
@@ -473,7 +486,7 @@
           <td id = "plus_td">
             <div class="parent_fill">
                 <div class="child_select block_align">  
-                  <select name="Pulse" id="Pulse">
+                  <select name="Rhythm" id="Rhythm" onchange="handle_select_change(this);">
                     <option selected="selected">Select</option>
                     <option >PEA</option>
                     <option>Asystole</option>
@@ -565,8 +578,12 @@
               </div> 
             </td>
              <td style="width:170px;">
+                 <div id='content'>
+                    <div style='float: left;' class="jqxWidget">
+                    </div>
+                </div>
                 <!--<input type="text" name="Infusion" id="Infusion"--> 
-                <div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
+                <!--div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
                   
                   <div style="width:1000px;">
                      <div class="infusion_div">
@@ -602,7 +619,7 @@
                        </div>
 
                   </div>
-               </div>
+               </div-->
             </td>
         </tr>
 
@@ -629,7 +646,7 @@
           <td id = "plus_td">
             <div class="parent_fill">
                 <div class="child_select block_align">  
-                  <select name="Pulse" id="Pulse">
+                  <select name="Rhythm" id="Rhythm" onchange="handle_select_change(this);">
                     <option selected="selected">Select</option>
                     <option >PEA</option>
                     <option>Asystole</option>
@@ -723,7 +740,11 @@
             </td>
              <td style="width:170px;">
                 <!--<input type="text" name="Infusion" id="Infusion"--> 
-                <div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
+                <div id='content'>
+                    <div style='float: left;' class="jqxWidget">
+                    </div>
+                </div>
+                <!--div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
                   
                   <div style="width:1000px;">
                      <div class="infusion_div">
@@ -759,7 +780,7 @@
                        </div>
 
                   </div>
-               </div>
+               </div-->
             </td>
         </tr>
           <!-- hidden row -->
@@ -785,7 +806,7 @@
          <td id ="plus_td">
             <div class="parent_fill">
                 <div class="child_select block_align">  
-                  <select name="Pulse" id = "pulse"  onchange="handle_select_change(this);">
+                  <select name="Rhythm" id="Rhythm" onchange="handle_select_change(this);">
                     <option selected="selected">Select</option>
                     <option >PEA</option>
                     <option>Asystole</option>
@@ -879,8 +900,12 @@
               </div> 
             </td>
              <td style="width:170px;">
+                <div id='content'>
+                    <div style='float: left;' class="jqxWidget">
+                    </div>
+                </div>
                 <!--<input type="text" name="Infusion" id="Infusion"--> 
-                <div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
+                <!--div style="overflow-x:scroll; overflow-y:hidden; width:170px; margin-right:-50px;">
                   
                   <div style="width:1000px;">
                      <div class="infusion_div">
@@ -915,7 +940,7 @@
                          <button onclick="toggle_handler(this);">Lido</button>
                        </div>
                   </div>
-               </div>
+               </div-->
             </td>
         </tr>
       </tbody>
@@ -923,6 +948,7 @@
     
 
 </div> 
+
  <div style="border: 2px solid black;">
       <label for="cpr" id="cpr" style="width:50%; float:left;font-size: large; ">CPR: 0</label>
       <label for="epi" id="epi" style="margin-left:94.5%;font-size: large;">EPI: 0</label>
