@@ -1,0 +1,118 @@
+======================================================================================================================	
+70 point project (Preemptive OS)
+Team : Shashi Ranjan (109974495), Ashish Goel(109753528), Rohan Bharadwaj(109758985)
+====================================================================================================================== 
+- For compiling the OS run make from root level folder
+- To run the system use the following command
+	$ sh start.sh
+  This will startup SBunix with the sbush shell prompt.
+- These are the following commands to test shell
+  - pwd (To display current working directory)
+  - ps (To display running processes)
+  - ls (To list contents of a directory)
+  - cat <filename> (To read contents of a file)
+  - cd bin  (change directory, we support absolute/relative path for cd) (Also supports cd . , .. and cd .././.. )
+  - kill pid (To kill a process)
+  - set PS1 <string>  (To change the prompt message)
+  - $PATH             (To display the current PATH)
+  - set PATH <path to add> (To add new path to PATH variable)
+  - clear (To clear screen)
+  - printftest | scan  (The first binary writes to pipe and the second one reads from pipe  and outputs onto screen)
+  - echo <string> (To place a string on the computer terminal)
+
+=======================================================================================================================
+Test Cases 
+=======================================================================================================================
+Notes: 
+-We are running an idle process "hello" which keeps kernel idle whenever there is no task to schedule (Please don't kill this process).
+-We are not handling arrow keys so please avoid to use it while testing. 
+-For multiple forks we are supporting 900 childs at max at a time.
+
+
+- Executing Scripts
+	$ test.sbush		(This file is present in rootfs/)
+	$ sbush test.sbush
+
+- echo
+ 	$ echo sburocks
+ 	$ echo operating systems
+	
+- ls
+	$ ls
+	
+- cd 	
+  	$ cd 
+  	$ cd .
+  	$ cd ..
+	$ cd /
+	$ cd .././..
+	$ cd bin
+	
+- ps
+	$ ps
+	
+- background process
+	$ bg &   (bg is a binary that has infinite loop, run this and check using ps)
+	
+- kill
+	$ kill 4 (kill takes 1 argument which is pid, use ps to find the above process(bg) and kill it then check using ps) 
+	
+- pipe (|) 
+	$ printftest | scan ( give spaces before and after | )
+	$ ls | scan
+	$ ls | scan | scan 
+	$ printftest | scan | scan
+	$ cat shashi.txt | scan 
+	
+- PS1
+    $ set PS1 hello
+	
+- PATH
+	$ $PATH (displays the PATH env variable)   
+	
+- sleep
+	$ sleep 3 (sleeps for 3 seconds)	
+
+
+=======================================================================================================================
+Binaries:
+=======================================================================================================================
+
+-ps(report snapshot of current processes)
+-printftest(test binary for pipes "writing end of pipe")
+-scan(test binary for pipes "reading end of pipe")
+-bg(sample process to run in background)
+-kill(kills the process)
+-sbush(shell)
+-cat(display text file content)
+-cd(to change directory)
+-hello(Idle user process [PLEASE DONT KILL THIS PROCESS])
+-sleep(make the process sleep for specified seconds)
+-ls(list directoy contents)
+ 
+
+===========================================================================================================================================
+The provided Makefile:
+  1) builds a kernel
+  2) copies it into rootfs/boot/kernel/kernel
+  3) creates an ISO CD image with the rootfs/ contents
+
+To boot the system in QEMU, run:
+  qemu-system-x86_64 -curses -cdrom $USER.iso -drive id=disk,file=$USER.img,if=none -device ahci,id=ahci -device ide-drive,drive=disk,bus=ahci.0 -net nic -net user,hostfwd=tcp::10080-:80 -net user,hostfwd=tcp::10023-:23 --no-reboot -gdb tcp::9998
+
+  Explanation of parameters:
+  -curses         use a text console (omit this to use default SDL/VNC console)
+  -cdrom x.iso    connect a CD-ROM and insert CD with x.iso disk
+  --no-reboot     exit when guest reboots
+  -gdb tcp::9998  listen for "remote" debugging connections on port 9998
+
+  connect a hard drive with x.img disk:
+  -drive id=disk,file=$USER.img,if=none -device ahci,id=ahci -device ide-drive,drive=disk,bus=ahci.0
+  connect a NIC and forward local port 10080 into port 80 and local port 10023 to port 23
+  -net nic -net user,hostfwd=tcp::10080-:80 -net user,hostfwd=tcp::10023-:23
+
+When using the -curses mode, switch to the qemu> console with ESC-2.
+
+To connect a remote debugger to the running qemu VM:
+  gdb ./kernel
+  target remote localhost:9998

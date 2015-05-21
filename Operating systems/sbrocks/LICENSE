@@ -1,0 +1,103 @@
+Copyright (c)2015 "The SBUnix" by Shashi Ranjan(netID:sranjan,SBUID:109974495), Rohan Bhardawaj(netID:rbhardawaj,SBUID:109758985) 
+and Ashish Goel(netID:asgoel,SBUID:109753528).All rights reserved.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+
+Copyright (c) 2013-2015 by Mike Ferdman.  All rights reserved.
+	Unrestricted rights are granted to instructors and students of CSE506 class
+	at Stony Brook University.
+
+Copyright 1992-2013 The FreeBSD Project. All rights reserved.
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	Redistributions of source code must retain the above copyright notice, this
+	list of conditions and the following disclaimer.  Redistributions in binary
+	form must reproduce the above copyright notice, this list of conditions and the
+	following disclaimer in the documentation and/or other materials provided with
+	the distribution.  THIS SOFTWARE IS PROVIDED BY THE FREEBSD PROJECT ``AS IS''
+	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE FREEBSD PROJECT OR CONTRIBUTORS BE LIABLE FOR
+	ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+	(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+	ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+	The views and conclusions contained in the software and documentation are those
+	of the authors and should not be interpreted as representing official policies,
+	either expressed or implied, of the FreeBSD Project.
+
+Copyright (c) 2010, Chris Stones.  All rights reserved.
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	Redistributions of source code must retain the above copyright notice, this
+	list of conditions and the following disclaimer.  Redistributions in binary
+	form must reproduce the above copyright notice, this list of conditions and
+	the following disclaimer in the documentation and/or other materials provided
+	with the distribution.  Neither the name Chris Stones nor the names of his
+	contributors may be used to endorse or promote products derived from this
+	software without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+	ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+	DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+	OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+libc/printf.c is copyright:
+
+/* -*- linux-c -*- ------------------------------------------------------- *
+ *
+ *   Copyright (C) 1991, 1992 Linus Torvalds
+ *   Copyright 2007 rPath, Inc. - All Rights Reserved
+ *
+ *   This file is part of the Linux kernel, and is made available under
+ *   the terms of the GNU General Public License version 2.
+ *
+ * ----------------------------------------------------------------------- */
+
+
+ // Web References
+
+  http://danluu.com/malloc-tutorial/
+  http://www.jamesmolloy.co.uk/tutorial_html/4.-The%20GDT%20and%20IDT.html
+  http://wiki.osdev.org/Main_Page
+  http://www.brokenthorn.com/Resources/OSDev23.html
+  https://www.kernel.org/
+  
+  http://www.brokenthorn.com/Resources/OSDev24.html
+  /* adapted from Chris Stones, shovelos */
+  http://www.osdever.net/bkerndev/Docs/idt.htm
+  http://www.osdever.net/tutorials/view/interrupts-exceptions-and-idts-part-1-interrupts-isrs-irqs-the-pic
+  http://www.osdever.net/bkerndev/Docs/irqs.htm
+  osdev :: http://www.osdever.net/bkerndev/Docs/irqs.htm
+  osdev::  http://www.osdever.net/bkerndev/Docs/creatingmain.htm
+  http://www.osdever.net/bkerndev/Docs/printing.htm
+  http://www.osdever.net/bkerndev/Docs/pit.htm
+  http://www.osdever.net/bkerndev/Docs/keyboard.htm
+  http://www.brokenthorn.com/Resources/OSDev24.html
+  https://sourceware.org/git/?p=glibc.git;a=blob_plain;f=elf/elf.h
+
+
